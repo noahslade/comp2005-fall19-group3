@@ -78,7 +78,7 @@ public class Main extends JFrame {
 		colorClass.setBounds(0,0,460,310);
 	    Board=(blokus.board) routes[3];
 		Board.setBounds(0,0,1280,720);
-		Board.setVisible(true);
+		Board.setVisible(false);
 		
 		
 		
@@ -97,7 +97,7 @@ public class Main extends JFrame {
 		land_panel.setBounds(0, 0, 485, 343);
 		contentPane.add(land_panel);
 		land_panel.setLayout(null);
-		land_panel.setVisible(false);
+		land_panel.setVisible(true);
 		contentPane.add((initial));
 		contentPane.add((colorClass));
 		contentPane.add((land_panel));

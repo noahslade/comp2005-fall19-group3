@@ -191,7 +191,6 @@ public class shape extends JPanel {
 				
 			}
 		}
-		System.out.println(Arrays.deepToString(shapesCoordinates[currentSelected]));
 	}
 	public void rotateC() {
 		rotateCoordinatesCW();
