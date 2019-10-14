@@ -13,7 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class init extends JPanel {
-	private color color_panel;
 
 	/**
 	 * Create the panel.
@@ -21,8 +20,6 @@ public class init extends JPanel {
 	 */
 	public init(Main main) {
 		setLayout(null);
-		//color_panel = new color();
-		//color_panel.setBounds(0,0,450,300);
 		
 		JLabel lblNewLabel = new JLabel("No. of Player's");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));

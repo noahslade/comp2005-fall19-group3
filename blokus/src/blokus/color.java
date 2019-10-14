@@ -84,7 +84,7 @@ public class color extends JPanel {
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				main.setRoute("shape");
+				main.setRoute("board");
 			}
 		});
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));

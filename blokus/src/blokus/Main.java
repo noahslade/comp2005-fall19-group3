@@ -18,8 +18,9 @@ public class Main extends JFrame {
 	private JPanel contentPane;
 	private init initial;
 	private color colorClass;
-	private JPanel[] routes= {new init(this),new color(this),new JPanel(),new shape()};
-	private String route="main";
+	private board Board;
+	private JPanel[] routes= {new init(this),new color(this),new JPanel(),new board()};
+	private String route="board";
 	
 
 	/**
@@ -51,11 +52,12 @@ public class Main extends JFrame {
 			routes[2].setVisible(false);
 			routes[3].setVisible(false);
 		}
-		else if(route=="shape") {
+		else if(route=="board") {
 			routes[0].setVisible(false);
 			routes[1].setVisible(false);
 			routes[2].setVisible(false);
 			routes[3].setVisible(true);
+			
 			
 		}
 	}
@@ -74,9 +76,9 @@ public class Main extends JFrame {
 		colorClass.setVisible(false);
 		initial.setBounds(0,0,460,310);
 		colorClass.setBounds(0,0,460,310);
-		shape shapeList=(blokus.shape) routes[3];
-		shapeList.setBounds(0,0,460,750);
-		shapeList.setVisible(false);
+	    Board=(blokus.board) routes[3];
+		Board.setBounds(0,0,1280,720);
+		Board.setVisible(true);
 		
 		
 		
@@ -85,7 +87,7 @@ public class Main extends JFrame {
 		System.setProperty("swing.aatext", "true");
 	    
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 491, 800);
+		setBounds(100, 100, 1300, 800);
 		setResizable(false);
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
@@ -95,11 +97,11 @@ public class Main extends JFrame {
 		land_panel.setBounds(0, 0, 485, 343);
 		contentPane.add(land_panel);
 		land_panel.setLayout(null);
-		land_panel.setVisible(true);
+		land_panel.setVisible(false);
 		contentPane.add((initial));
 		contentPane.add((colorClass));
 		contentPane.add((land_panel));
-		contentPane.add(shapeList);
+		contentPane.add(Board);
 		
 		JLabel lblNewLabel = new JLabel("Blokus");
 		lblNewLabel.setBounds(211, 70, 57, 24);
