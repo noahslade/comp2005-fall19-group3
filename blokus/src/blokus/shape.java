@@ -241,7 +241,7 @@ public class shape extends JPanel {
 		setLayout(new GridLayout(7,3));
 		for (int i=0;i<21;i++) {
 			JPanel panel = new JPanel();
-			panel.setBackground(Color.black);
+			panel.setBackground(Color.white);
 			panel.setLayout(new GridLayout(5,5));
 			panel.setBounds(0, 0, 1, 1);
 			for(int j=0;j<5;j++)
