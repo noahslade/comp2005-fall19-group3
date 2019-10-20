@@ -2,13 +2,15 @@ package blokus;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
@@ -94,7 +96,7 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel land_panel = routes[2];
-		land_panel.setBounds(0, 0, 485, 343);
+		land_panel.setBounds(0, 0, 1300, 343);
 		contentPane.add(land_panel);
 		land_panel.setLayout(null);
 		land_panel.setVisible(true);
@@ -104,22 +106,20 @@ public class Main extends JFrame {
 		contentPane.add(Board);
 		
 		JLabel lblNewLabel = new JLabel("Blokus");
-		lblNewLabel.setBounds(211, 70, 57, 24);
+		lblNewLabel.setBounds(550, 70, 185, 45);
 		land_panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 55));
 		
-		JLabel lblNewLabel_1 = new JLabel("Start");
-		lblNewLabel_1.setBackground(Color.GREEN);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(199, 194, 82, 30);
-		land_panel.add(lblNewLabel_1);
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		JButton start_button = new JButton("Start");
+		start_button.setBackground(Color.GREEN);
+		start_button.setHorizontalAlignment(SwingConstants.CENTER);
+		start_button.setBounds(590, 300, 100, 50);
+		land_panel.add(start_button);
+		start_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				setRoute("init");
 			}
 		});
-		lblNewLabel_1.setForeground(Color.DARK_GRAY);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		start_button.setFont(new Font("Tahoma", Font.BOLD, 25));
 	}
 }

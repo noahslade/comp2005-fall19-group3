@@ -57,6 +57,7 @@ public class color extends JPanel {
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				main.setRoute("init");
 			}
 			
 		});
@@ -79,6 +80,12 @@ public class color extends JPanel {
 		panel_1.setBackground(Color.GREEN);
 		panel_1.setBounds(381, 261, 59, 28);
 		add(panel_1);
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				main.setRoute("board");
+			}
+		});
 		
 		JLabel lblNewLabel_2 = new JLabel("START");
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {

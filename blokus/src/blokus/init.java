@@ -45,6 +45,13 @@ public class init extends JPanel {
 		panel.setBackground(Color.GREEN);
 		panel.setBounds(370, 258, 70, 31);
 		add(panel);
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				main.setRoute("color");
+				System.out.print("workinginit");
+			}
+		});
 		
 		JLabel lblNewLabel_1 = new JLabel("NEXT");
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
@@ -59,7 +66,7 @@ public class init extends JPanel {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"0","1", "2", "3"}));
 		comboBox.setBounds(148, 95, 41, 22);
 		add(comboBox);
 		

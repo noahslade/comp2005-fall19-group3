@@ -1,5 +1,6 @@
 package blokus;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -40,7 +41,8 @@ public class board extends JPanel {
 		add(panel_4);
 		panel_4.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("Counter-Clockwise");
+		JButton btnNewButton_2 = new JButton();
+		btnNewButton_2.setIcon(new ImageIcon(getClass().getResource("image/counterclockwise.png")));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shapeList.rotateCC();
@@ -49,7 +51,8 @@ public class board extends JPanel {
 		btnNewButton_2.setBounds(40, 11, 89, 68);
 		panel_4.add(btnNewButton_2);
 		
-		JButton btnCc = new JButton("Clockwise");
+		JButton btnCc = new JButton();
+		btnCc.setIcon(new ImageIcon(getClass().getResource("image/clockwise.png")));
 		btnCc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shapeList.rotateC();
@@ -58,7 +61,8 @@ public class board extends JPanel {
 		btnCc.setBounds(40, 122, 89, 68);
 		panel_4.add(btnCc);
 		
-		JButton btnFv = new JButton("FV");
+		JButton btnFv = new JButton();
+		btnFv.setIcon(new ImageIcon(getClass().getResource("image/vertical.png")));
 		btnFv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				shapeList.flipVer();
@@ -67,7 +71,8 @@ public class board extends JPanel {
 		btnFv.setBounds(40, 236, 89, 68);
 		panel_4.add(btnFv);
 		
-		JButton btnFh = new JButton("FH");
+		JButton btnFh = new JButton();
+		btnFh.setIcon(new ImageIcon(getClass().getResource("image/switch_horizontal.png")));
 		btnFh.setBounds(40, 354, 89, 68);
 		btnFh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
