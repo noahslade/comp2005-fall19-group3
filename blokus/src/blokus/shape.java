@@ -237,8 +237,8 @@ public class shape extends JPanel {
 					shapeList[i][j][k].shapeSize=shapesCoordinates[i].length;
 					}
 				}
-	public shape() {
-		setLayout(new GridLayout(7,3));
+	public shape(int x, int y) {
+		setLayout(new GridLayout(x,y));
 		for (int i=0;i<21;i++) {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.white);

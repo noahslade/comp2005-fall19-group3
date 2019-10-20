@@ -79,7 +79,7 @@ public class Main extends JFrame {
 		initial.setBounds(0,0,460,310);
 		colorClass.setBounds(0,0,460,310);
 	    Board=(blokus.board) routes[3];
-		Board.setBounds(0,0,1280,720);
+		Board.setBounds(0,0,1800,980);
 		Board.setVisible(false);
 		
 		
@@ -89,7 +89,7 @@ public class Main extends JFrame {
 		System.setProperty("swing.aatext", "true");
 	    
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1300, 800);
+		setBounds(100, 100, 1920, 1080);
 		setResizable(false);
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
