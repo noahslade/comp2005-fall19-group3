@@ -10,10 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class shape extends JPanel {
-	
+	private board currentBoard;
 	private class customShapeButton extends JButton{
 		
 		private int isOne=0,actionIndex=0;
+		
 		public int shapeSize=0;
 		private int[] index= {0,0};
 		
@@ -49,31 +50,29 @@ public class shape extends JPanel {
 	 * Create the panel.
 	 */
 	private int[][][] shapesCoordinates = {
-			{{0, 0}},
-
-			{{0, 0}, {1, 0}},
-
-			{{-1, 0}, {0, 0}, {1, 0}},
-			{{-1, 0}, {0, 0}, {0, 1}},
-
-			{{-2, 0}, {-1, 0}, {0, 0}, {1, 0}}, 
+			{{0, 0}},{{-1, 0}, {0, 0}, {0, 1}}, 
 			{{-1, 0}, {0, 0}, {1, 0}, {1, 1}},
 			{{-1, 0}, {0, 0}, {1, 0}, {0, -1}}, 
 			{{0, 0}, {1, 0}, {0, -1}, {1, -1}},
 			{{-1, 1}, {-1, 0}, {0, 0}, {0, -1}},
+			{{-2, 0}, {-1, 0}, {0, 0}, {1, 0}},
+			{{-2, 0}, {-1, 0}, {0, 0}, {0, -1}, {0, -2}},
 
-			{{-2, 0}, {-1, 0}, {0, 0}, {1, 0}, {2, 0}},
+			{{-2, 0}, {-1, 0}, {0, 0}, {0, -1}, {0, 1}},
+			
 			{{-2, 0}, {-1, 0}, {0, 0}, {1, 0}, {1, 1}},
 			{{-1, 1}, {-1, 0}, {0, 0}, {0, -1}, {0, -2}},
 			{{-1, 0}, {0, 0}, {-1, -1}, {0, -1}, {0, -2}},
-			{{1, -1}, {0, -1}, {1, 1}, {0, 1}, {0, 0}},//
+			
 			{{-1, 1}, {0, 1}, {0, 0}, {0, -1}, {1, -1}},
 			{{-1, 1}, {-1, 0}, {0, 0}, {0, -1}, {1, -1}},
-			{{-2, 0}, {-1, 0}, {0, 0}, {0, -1}, {0, -2}},
-			{{-2, 0}, {-1, 0}, {0, 0}, {0, -1}, {0, 1}},
+			
 			{{-1, 1}, {0, 1}, {0, 0}, {1, 0}, {0, -1}},
 			{{-1, 0}, {1, 0}, {0, 0}, {0, 1}, {0, -1}},
-			{{-1, 0}, {0, -1}, {0, 0}, {1, 0}, {2, 0}}
+			{{1, -1}, {0, -1}, {1, 1}, {0, 1}, {0, 0}},//
+			{{-1, 0}, {0, -1}, {0, 0}, {1, 0}, {2, 0}},
+			{{-2, 0}, {-1, 0}, {0, 0}, {1, 0}, {2, 0}},
+		    {{0, 0}, {1, 0}},{{-1, 0}, {0, 0}, {1, 0}}
 			};
 	private int[][] action=shapesCoordinates[0];
 	
@@ -243,20 +242,22 @@ public class shape extends JPanel {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.white);
 			panel.setLayout(new GridLayout(5,5));
-			panel.setBounds(0, 0, 1, 1);
+			panel.setBounds(0, 0, 50, 50);
 			for(int j=0;j<5;j++)
 				for(int k=0;k<5;k++) {
 					customShapeButton button=new customShapeButton();
 					shapeList[i][j][k]=button;
-					button.setBounds(0,0,1,1);
+					button.setBounds(0,0,1,3);
 					panel.add(button);
 					button.setIndex(j,k);
 					button.setActionIndex(i);
 					button.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
+							
 							customShapeButton thisButton=((customShapeButton) e.getSource());
 							action=shapesCoordinates[thisButton.getActionIndex()];
 							currentSelected=thisButton.getActionIndex();
+							currentBoard.setActions(action);
 						}
 					});
 				}
@@ -264,6 +265,10 @@ public class shape extends JPanel {
 		}
 		hideShapes();
 		drawShapes();
+	}
+	public void setBoard(board currentBoard) {
+		System.out.println("setBoard");
+				this.currentBoard=currentBoard;
 	}
 
 }
