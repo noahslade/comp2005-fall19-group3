@@ -34,7 +34,7 @@ public class Board extends JPanel {
 	//Creating an object of boardButton class to build an board of 20*20
 	private boardButton[][] board_button=new boardButton[GridSize][GridSize];
 	//action contains the coordinate of the selected piece
-	private int[][] actions= {{0,0}};
+	private int[][] actions= {{}};
 	//thisbutton is used to add mouse listen for game_board grids
 	private JButton thisButton;
 	
@@ -114,11 +114,12 @@ public class Board extends JPanel {
 					@Override
 					public void mouseEntered(MouseEvent e) {
 						try {
+							if (actions.length>0){
 							int x=((boardButton)e.getSource()).getIndex()[0];
 							int y=((boardButton)e.getSource()).getIndex()[1];
 							for (int i=0;i<actions.length;i++) {
 								board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.green);
-							}
+							}}
 						}catch(Exception s) {}
 							
 						
