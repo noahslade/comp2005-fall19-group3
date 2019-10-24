@@ -101,7 +101,6 @@ public class Blokus extends JFrame {
 		// Main Screen panel which contains logo blokus and start a game button
 		land_panel = routes[2];
 		land_panel.setBounds(0, 0, 1300, 343);
-
 		Main_panel.add(land_panel);
 		land_panel.setLayout(null);
 		land_panel.setVisible(true);
