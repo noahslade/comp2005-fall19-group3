@@ -1,0 +1,13 @@
+Hi,
+Compile Instructions 
+Navigate into the directory of blokus
+type this in command line or terminal "javac *.java"
+
+To run the program you could either run game.jar or type this in terminal or command line "java Blokus"
+
+About the Minor release
+
+Minor Release includes the main screen with the functionality to navigate to initiate a game, color selection and finally to the board of the game.
+Init.java and ColorSelection.java are the panels with the functionality of only next, back and start button
+Board.java or Board Panel only contains the functionality for left most shape containers, rotate buttons and place a piece functionality
+that is you could select any of the shape from the container and you could place it on the board and/or rotate and/or flip it.
