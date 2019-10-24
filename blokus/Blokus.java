@@ -1,5 +1,3 @@
-package blokus;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JButton;
@@ -9,19 +7,22 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 
-public class Main extends JFrame {
 
-	private JPanel contentPane;
-	private init initial;
-	private color colorClass;
-	private board Board;
-	private JPanel[] routes= {new init(this),new color(this),new JPanel(),new board()};
+public class Blokus extends JFrame {
+
+	private JPanel Main_panel;
+	private JPanel land_panel;
+	private Init initiate_panel;
+	private ColorSelection color_panel;
+	private Board Board_panel;
+	private JPanel[] routes= {new Init(this),new ColorSelection(this),new JPanel(),new Board()};
 	private String route="board";
 	
 
@@ -32,7 +33,7 @@ public class Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame = new Main();
+					Blokus frame = new Blokus();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,20 +68,22 @@ public class Main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Main() {
+	public Blokus() {
 		
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		initial=(blokus.init) routes[0];
-		initial.setVisible(false);
-		colorClass=(color) routes[1];
-		colorClass.setVisible(false);
-		initial.setBounds(0,0,460,310);
-		colorClass.setBounds(0,0,460,310);
-	    Board=(blokus.board) routes[3];
-		Board.setBounds(0,0,1223,980);
-		Board.setVisible(false);
+		// Creating main panel of the frame which is going to contain all the other panels
+		Main_panel = new JPanel();
+		Main_panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		//All the other panels of the project as of now
+		initiate_panel=(Init) routes[0];
+		initiate_panel.setVisible(false);
+		color_panel=(ColorSelection) routes[1];
+		color_panel.setVisible(false);
+		initiate_panel.setBounds(0,0,460,310);
+		color_panel.setBounds(0,0,460,310);
+	    Board_panel=(Board) routes[3];
+		Board_panel.setBounds(0,0,1223,980);
+		Board_panel.setVisible(false);
 		
 		
 		
@@ -91,24 +94,29 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1250, 1020);
 		setResizable(false);
-		setContentPane(contentPane);
+		setContentPane(Main_panel);
 		setLocationRelativeTo(null);
-		contentPane.setLayout(null);
-		
-		JPanel land_panel = routes[2];
+		Main_panel.setLayout(null);
+
+		// Main Screen panel which contains logo blokus and start a game button
+		land_panel = routes[2];
 		land_panel.setBounds(0, 0, 1300, 343);
-		contentPane.add(land_panel);
+
+		Main_panel.add(land_panel);
 		land_panel.setLayout(null);
 		land_panel.setVisible(true);
-		contentPane.add((initial));
-		contentPane.add((colorClass));
-		contentPane.add((land_panel));
-		contentPane.add(Board);
 		
-		JLabel lblNewLabel = new JLabel("Blokus");
-		lblNewLabel.setBounds(550, 70, 185, 45);
-		land_panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 55));
+
+		//Adding all the other panels of the project to the main panel of the frame 
+		Main_panel.add((initiate_panel));
+		Main_panel.add((color_panel));
+		Main_panel.add((land_panel));
+		Main_panel.add(Board_panel);
+		
+		JLabel blokus_label = new JLabel("Blokus");
+		blokus_label.setBounds(550, 70, 185, 45);
+		land_panel.add(blokus_label);
+		blokus_label.setFont(new Font("Tahoma", Font.BOLD, 55));
 		
 		JButton start_button = new JButton("Start");
 		start_button.setBackground(Color.GREEN);

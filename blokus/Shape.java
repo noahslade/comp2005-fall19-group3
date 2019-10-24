@@ -1,5 +1,3 @@
-package blokus;
-
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,36 +7,8 @@ import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class shape extends JPanel {
-	private board currentBoard;
-	private class customShapeButton extends JButton{
-		
-		private int isOne=0,actionIndex=0;
-		
-		public int shapeSize=0;
-		private int[] index= {0,0};
-		
-		public boolean  getOne() {
-			return this.isOne==1;
-		}
-		public void setOne(int s) {
-			this.isOne=s;
-		}
-		public int[]  getIndex() {
-			return this.index;
-		}
-		public void setIndex(int x,int y) {
-			this.index[0]=x;
-			this.index[1]=y;
-		}
-		public int  getActionIndex() {
-			return this.actionIndex;
-		}
-		public void setActionIndex(int s) {
-			this.actionIndex=s;
-		}
-		
-	}
+public class Shape extends JPanel {
+	private Board currentBoard;
 	
 	
 	
@@ -96,8 +66,6 @@ public class shape extends JPanel {
 	}
 	
 	private void rotateCoordinatesCCW() {
-		
-		System.out.println(Arrays.deepToString(shapesCoordinates[currentSelected]));
 		for (int i=0;i<action.length;i++) {
 			if(action[i][0]==0) {
 				if(action[i][1]==0) {
@@ -236,7 +204,7 @@ public class shape extends JPanel {
 					shapeList[i][j][k].shapeSize=shapesCoordinates[i].length;
 					}
 				}
-	public shape(int x, int y) {
+	public Shape(int x, int y) {
 		setLayout(new GridLayout(x,y));
 		for (int i=0;i<21;i++) {
 			JPanel panel = new JPanel();
@@ -266,8 +234,7 @@ public class shape extends JPanel {
 		hideShapes();
 		drawShapes();
 	}
-	public void setBoard(board currentBoard) {
-		System.out.println("setBoard");
+	public void setBoard(Board currentBoard) {
 				this.currentBoard=currentBoard;
 	}
 
