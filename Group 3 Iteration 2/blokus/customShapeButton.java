@@ -1,8 +1,8 @@
 import javax.swing.JButton;
 
-class customShapeButton extends JButton{
+class CustomShapeButton extends JButton{
 		
-		private int isOne=0,actionIndex=0;
+		private int isOne=0,selectionIndex=0;
 		
 		public int shapeSize=0;
 		private int[] index= {0,0};
@@ -20,11 +20,11 @@ class customShapeButton extends JButton{
 			this.index[0]=x;
 			this.index[1]=y;
 		}
-		public int  getActionIndex() {
-			return this.actionIndex;
+		public int  getSelectionIndex() {
+			return this.selectionIndex;
 		}
-		public void setActionIndex(int s) {
-			this.actionIndex=s;
+		public void setSelectionIndex(int s) {
+			this.selectionIndex=s;
 		}
 		
 	}

@@ -18,10 +18,10 @@ public class Board extends JPanel {
      * Create the panel.
      * 
      */
-    private Shape shapeList1=new Shape(7,3);
-    private Shape shapeList2=new Shape(3,7);
-    private Shape shapeList3=new Shape(7,3);
-    private Shape shapeList4=new Shape(3,7);
+    private Shape shapeList1=new Shape(7,3,Color.red);
+    private Shape shapeList2=new Shape(3,7,Color.blue);
+    private Shape shapeList3=new Shape(7,3,Color.green);
+    private Shape shapeList4=new Shape(3,7,Color.yellow);
 
     private GridLayout gridLayout_1;
     private GridLayout gridLayout_2;
@@ -31,9 +31,9 @@ public class Board extends JPanel {
 
     private int GridSize=20;
     //Creating an object of boardButton class to build an board of 20*20
-    private boardButton[][] board_button=new boardButton[GridSize][GridSize];
+    private BoardButton[][] board_button=new BoardButton[GridSize][GridSize];
     //action contains the coordinate of the selected piece
-    private int[][] actions= {{}};
+    private int[][] selectedShapeCord= {{}};
     //thisbutton is used to add mouse listen for game_board grids
     private JButton thisButton;
     
@@ -41,8 +41,8 @@ public class Board extends JPanel {
     
     
     
-    public void setActions(int[][] actions) {
-        this.actions=actions;
+    public void setSelection(int[][] selectedShapeCord) {
+        this.selectedShapeCord=selectedShapeCord;
     }
     
     
@@ -113,7 +113,7 @@ public class Board extends JPanel {
         
         for(int i=0;i<GridSize;i++) {
             for(int j=0;j<GridSize;j++) {
-                board_button[i][j] =new boardButton(i,j);
+                board_button[i][j] =new BoardButton(i,j);
                 thisButton=board_button[i][j];
                 thisButton.setBackground(Color.white);
                 
@@ -121,45 +121,45 @@ public class Board extends JPanel {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         try {
-                            if (actions.length>0){
-                            int x=((boardButton)e.getSource()).getIndex()[0];
-                            int y=((boardButton)e.getSource()).getIndex()[1];
-                            for (int i=0;i<actions.length;i++) {
-                                board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.green);}}
+                            if (selectedShapeCord.length>0){
+                            int x=((BoardButton)e.getSource()).getIndex()[0];
+                            int y=((BoardButton)e.getSource()).getIndex()[1];
+                            for (int i=0;i<selectedShapeCord.length;i++) {
+                                board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].setBackground(Color.red);}}
                         }catch(Exception s) {}                         
                         
                     }
                     @Override
                     public void mouseExited(MouseEvent e) {
                         try {
-                            int x=((boardButton)e.getSource()).getIndex()[0];
-                            int y=((boardButton)e.getSource()).getIndex()[1];
-                            for (int i=0;i<actions.length;i++) {
-                                if(!board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()){
-                                    board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.white);
+                            int x=((BoardButton)e.getSource()).getIndex()[0];
+                            int y=((BoardButton)e.getSource()).getIndex()[1];
+                            for (int i=0;i<selectedShapeCord.length;i++) {
+                                if(!board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].isPlaced()){
+                                    board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].setBackground(Color.white);
                             }
                         }}catch(Exception s) {}
                     }
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         try {
-                            int x=((boardButton)e.getSource()).getIndex()[0];
-                            int y=((boardButton)e.getSource()).getIndex()[1];
+                            int x=((BoardButton)e.getSource()).getIndex()[0];
+                            int y=((BoardButton)e.getSource()).getIndex()[1];
                             int k=0;
-                            for (int i=0;i<actions.length;i++) {
-                                if(board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()==false && (x+actions[i][0]<=20 && y+actions[i][1]<=20)) {
+                            for (int i=0;i<selectedShapeCord.length;i++) {
+                                if(board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].isPlaced()==false && (x+selectedShapeCord[i][0]<=20 && y+selectedShapeCord[i][1]<=20)) {
                                     k=k+1;
                                 }
                             }
-                            if (k==actions.length){
-                            for (int i=0;i<actions.length;i++) {
-                                if(board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()==false) {
-                                    board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.green);
-                                    board_button[x+actions[i][0]][y+actions[i][1]].setTaken(true);
+                            if (k==selectedShapeCord.length){
+                            for (int i=0;i<selectedShapeCord.length;i++) {
+                                if(board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].isPlaced()==false) {
+                                    board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].setBackground(Color.red);
+                                    board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].setTaken(true);
                                 }
                             }
                             int [][] empty_array={{}};
-                            setActions(empty_array);
+                            setSelection(empty_array);
                         }
                         
                         
@@ -206,14 +206,14 @@ public class Board extends JPanel {
         shapeList1.setBounds(38, 284, 180, 420);
         add(shapeList1);
         shapeList1.setBoard(this);
-        shapeList1.setBackground(new Color(132, 217, 4));
+        shapeList1.setBackground(new Color(175, 217, 85));
 
         shapeList2.setBounds(310, 809, 420, 160);//bottom container
         add(shapeList2);
         gridLayout_2 = (GridLayout) shapeList2.getLayout();
         gridLayout_2.setHgap(3);
         gridLayout_2.setVgap(3);
-        shapeList2.setBackground(new Color(132, 217, 4));
+        shapeList2.setBackground(new Color(175, 217, 85));
 
 
         gridLayout_3 = (GridLayout) shapeList3.getLayout();//right most container
@@ -221,7 +221,7 @@ public class Board extends JPanel {
         gridLayout_3.setHgap(3);
         shapeList3.setBounds(818, 284, 180, 420);
         add(shapeList3);
-        shapeList3.setBackground(new Color(132, 217, 4));
+        shapeList3.setBackground(new Color(175, 217, 85));
 
         
         shapeList4.setBounds(310, 27, 420, 180);//top most container
@@ -229,7 +229,8 @@ public class Board extends JPanel {
         gridLayout_4 = (GridLayout) shapeList4.getLayout();
         gridLayout_4.setVgap(3);
         gridLayout_4.setHgap(3);
-        shapeList4.setBackground(new Color(132, 217, 4));
+        shapeList4.setBackground(new Color(175, 217, 85));
+
 
 
         setBackground(new Color (175, 217, 85));

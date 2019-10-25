@@ -1,6 +1,6 @@
 import javax.swing.JButton;
 
-class boardButton extends JButton{
+class BoardButton extends JButton{
 		private int x,y;
 		private boolean isPlaced=false;
 		
@@ -15,7 +15,7 @@ class boardButton extends JButton{
 			int[] index= {this.x,this.y};
 			return index;
 		}
-		public boardButton(int x,int y){
+		public BoardButton(int x,int y){
 			this.x=x;
 			this.y=y;
 		}

@@ -23,7 +23,6 @@ public class Blokus extends JFrame {
 	private ColorSelection color_panel;
 	private Board Board_panel;
 	private JPanel[] routes= {new Init(this),new ColorSelection(this),new JPanel(),new Board()};
-	private String route="board";
 	
 
 	/**
