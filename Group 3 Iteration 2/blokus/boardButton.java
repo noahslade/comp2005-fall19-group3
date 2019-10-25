@@ -3,8 +3,7 @@ import javax.swing.JButton;
 class BoardButton extends JButton{
 		private int x,y;
 		private boolean isPlaced=false;
-		
-		
+		// uselses commen		
 		public boolean isPlaced() {
 			return isPlaced;
 		}
