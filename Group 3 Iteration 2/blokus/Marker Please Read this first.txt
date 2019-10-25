@@ -3,7 +3,7 @@ Compile Instructions
 Navigate into the directory of blokus
 type this in command line or terminal "javac *.java"
 
-To run the program you could either run game.jar or type this in terminal or command line "java Blokus"
+To run the program you could either run Group3BlokusGame.jar or type this in terminal or command line "java Blokus"
 
 About the Minor release
 
