@@ -2,14 +2,14 @@ import javax.swing.JButton;
 
 class boardButton extends JButton{
 		private int x,y;
-		private boolean isTaken=false;
+		private boolean isPlaced=false;
 		
 		
-		public boolean isTaken() {
-			return isTaken;
+		public boolean isPlaced() {
+			return isPlaced;
 		}
-		public void setTaken(boolean isTaken) {
-			this.isTaken = isTaken;
+		public void setTaken(boolean isPlaced) {
+			this.isPlaced = isPlaced;
 		}
 		public int[] getIndex() {
 			int[] index= {this.x,this.y};

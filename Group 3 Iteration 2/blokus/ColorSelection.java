@@ -15,9 +15,9 @@ public class ColorSelection extends JPanel {
 	 */
 	public ColorSelection(Blokus main) {
 		setLayout(null);
-
+	
 		JLabel top_label = new JLabel("COLOR SELECTION");
-		top_label.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		top_label.setFont(new Font("Tahoma", Font.BOLD, 15));
 		top_label.setBounds(141, 11, 156, 53);
 		add(top_label);
 		

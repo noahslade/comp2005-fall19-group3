@@ -80,10 +80,13 @@ public class Blokus extends JFrame {
 		color_panel=(ColorSelection) routes[1];
 		color_panel.setVisible(false);
 		initiate_panel.setBounds(0,0,460,310);
+		initiate_panel.setBackground(new Color (5, 131, 242));
 		color_panel.setBounds(0,0,460,310);
+		color_panel.setBackground(new Color (5, 131, 242));
 	    Board_panel=(Board) routes[3];
 		Board_panel.setBounds(0,0,1223,980);
 		Board_panel.setVisible(false);
+		
 		
 		
 		
@@ -100,11 +103,11 @@ public class Blokus extends JFrame {
 
 		// Main Screen panel which contains logo blokus and start a game button
 		land_panel = routes[2];
-		land_panel.setBounds(0, 0, 1300, 343);
-
+		land_panel.setBounds(0, 0, 800, 600);
 		Main_panel.add(land_panel);
 		land_panel.setLayout(null);
 		land_panel.setVisible(true);
+		land_panel.setBackground(new Color (5, 131, 242));
 		
 
 		//Adding all the other panels of the project to the main panel of the frame 
@@ -129,5 +132,7 @@ public class Blokus extends JFrame {
 			}
 		});
 		start_button.setFont(new Font("Tahoma", Font.BOLD, 25));
+
+		Main_panel.setBackground(new Color (5, 131, 242));
 	}
 }

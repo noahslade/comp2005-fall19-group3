@@ -66,6 +66,7 @@ public class Shape extends JPanel {
 	}
 	
 	private void rotateCoordinatesCCW() {
+		//Inspired from StackOverflow
 		for (int i=0;i<action.length;i++) {
 			if(action[i][0]==0) {
 				if(action[i][1]==0) {
@@ -119,7 +120,6 @@ public class Shape extends JPanel {
 					action[i][0]=1;
 					action[i][1]=-2;
 				}
-				//TODO
 			}else if(action[i][0]==2) {
 				if(action[i][1]==0) {
 					action[i][0]=0;
@@ -137,7 +137,6 @@ public class Shape extends JPanel {
 					action[i][0]=2;
 					action[i][1]=2;
 				}
-				//TODO
 			}else if(action[i][0]==-2) {
 				if(action[i][1]==0) {
 					action[i][0]=0;
