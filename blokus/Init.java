@@ -20,23 +20,23 @@ public class Init extends JPanel {
 		setLayout(null);
 		
 		JLabel num_player = new JLabel("No. of Player's");
-		num_player.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		num_player.setBounds(10, 38, 105, 31);
+		num_player.setFont(new Font("Tahoma", Font.BOLD, 15));
+		num_player.setBounds(10, 38, 120, 31);
 		add(num_player);
 		
 		JLabel num_cpu = new JLabel("No. of CPU's");
-		num_cpu.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		num_cpu.setBounds(10, 95, 105, 14);
+		num_cpu.setFont(new Font("Tahoma", Font.BOLD, 15));
+		num_cpu.setBounds(10, 95, 120, 14);
 		add(num_cpu);
 		
 		JLabel lblDifficulty = new JLabel("Difficulty Level");
-		lblDifficulty.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblDifficulty.setBounds(10, 151, 105, 14);
+		lblDifficulty.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblDifficulty.setBounds(10, 151, 120, 14);
 		add(lblDifficulty);
 		
 		JLabel lblRandomColor = new JLabel("Random Color");
-		lblRandomColor.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblRandomColor.setBounds(10, 218, 105, 14);
+		lblRandomColor.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblRandomColor.setBounds(10, 218, 120, 14);
 		add(lblRandomColor);
 		
 		JPanel next = new JPanel();
@@ -83,6 +83,8 @@ public class Init extends JPanel {
 		comboBox_3.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		comboBox_3.setBounds(148, 218, 61, 22);
 		add(comboBox_3);
+
+		setBackground(Color.LIGHT_GRAY);
 
 	}
 }

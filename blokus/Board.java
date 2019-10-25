@@ -85,6 +85,7 @@ public class Board extends JPanel {
         });
         flip_vertical_btn.setBounds(40, 236, 89, 68);
         alterState_pnl.add(flip_vertical_btn);
+        alterState_pnl.setBackground(new Color (86, 140, 48));
         
         JButton flip_horizontal_btn = new JButton();
         flip_horizontal_btn.setIcon(new ImageIcon(getClass().getResource("image/switch_horizontal.png")));
@@ -128,7 +129,7 @@ public class Board extends JPanel {
                             int x=((boardButton)e.getSource()).getIndex()[0];
                             int y=((boardButton)e.getSource()).getIndex()[1];
                             for (int i=0;i<actions.length;i++) {
-                                if(!board_button[x+actions[i][0]][y+actions[i][1]].isTaken()){
+                                if(!board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()){
                                     board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.white);
                             }
                         }}catch(Exception s) {}
@@ -140,18 +141,24 @@ public class Board extends JPanel {
                             int y=((boardButton)e.getSource()).getIndex()[1];
                             int k=0;
                             for (int i=0;i<actions.length;i++) {
-                                if(board_button[x+actions[i][0]][y+actions[i][1]].isTaken()==false && (x+actions[i][0]<=20 && y+actions[i][1]<=20)) {
+                                if(board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()==false && (x+actions[i][0]<=20 && y+actions[i][1]<=20)) {
                                     k=k+1;
                                 }
                             }
                             if (k==actions.length){
                             for (int i=0;i<actions.length;i++) {
-                                if(board_button[x+actions[i][0]][y+actions[i][1]].isTaken()==false) {
+                                if(board_button[x+actions[i][0]][y+actions[i][1]].isPlaced()==false) {
                                     board_button[x+actions[i][0]][y+actions[i][1]].setBackground(Color.green);
                                     board_button[x+actions[i][0]][y+actions[i][1]].setTaken(true);
                                 }
-                            }}
+                            }
+                            int [][] empty_array={{}};
+                            setActions(empty_array);
+                        }
+                        
+                        
                         }catch(Exception s) {}
+
                     }
                 });
                 
@@ -190,6 +197,7 @@ public class Board extends JPanel {
         shapeList1.setBounds(38, 284, 180, 420);
         add(shapeList1);
         shapeList1.setBoard(this);
+        shapeList1.setBackground(new Color(132, 217, 4));
 
         shapeList2.setBounds(310, 809, 420, 160);//bottom container
         add(shapeList2);
@@ -208,6 +216,8 @@ public class Board extends JPanel {
         gridLayout_4 = (GridLayout) shapeList4.getLayout();
         gridLayout_4.setVgap(3);
         gridLayout_4.setHgap(3);
+
+        setBackground(new Color (175, 217, 85));
         
     }
 }
