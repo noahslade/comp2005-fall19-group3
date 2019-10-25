@@ -64,10 +64,13 @@ public class Board extends JPanel {
             }
         });
         count_clockwisebtn.setBounds(40, 11, 89, 68);
+        count_clockwisebtn.setBackground(new Color(242, 226, 5));
+
         alterState_pnl.add(count_clockwisebtn);
         
         JButton clockwise_btn = new JButton();
         clockwise_btn.setIcon(new ImageIcon(getClass().getResource("image/clockwise.png")));
+        clockwise_btn.setBackground(new Color(242, 226, 5));
         clockwise_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 shapeList1.rotateC();
@@ -78,6 +81,8 @@ public class Board extends JPanel {
         
         JButton flip_vertical_btn = new JButton();
         flip_vertical_btn.setIcon(new ImageIcon(getClass().getResource("image/vertical.png")));
+        flip_vertical_btn.setBackground(new Color(242, 226, 5));
+
         flip_vertical_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 shapeList1.flipVer();
@@ -90,6 +95,7 @@ public class Board extends JPanel {
         JButton flip_horizontal_btn = new JButton();
         flip_horizontal_btn.setIcon(new ImageIcon(getClass().getResource("image/switch_horizontal.png")));
         flip_horizontal_btn.setBounds(40, 356, 89, 68);
+        flip_horizontal_btn.setBackground(new Color(242, 226, 5));
         flip_horizontal_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 shapeList1.flipHor();
@@ -170,6 +176,8 @@ public class Board extends JPanel {
         
         JButton saveButton = new JButton("SAVE");
         saveButton.setBounds(1062, 11, 89, 42);
+        saveButton.setBackground(new Color (86, 140, 48));
+
         add(saveButton);
         
         JButton hintButton = new JButton("HINT");
@@ -178,6 +186,7 @@ public class Board extends JPanel {
             }
         });
         hintButton.setBounds(909, 11, 89, 42);
+        hintButton.setBackground(new Color(86, 140, 48));
         add(hintButton);
 
         
@@ -204,18 +213,24 @@ public class Board extends JPanel {
         gridLayout_2 = (GridLayout) shapeList2.getLayout();
         gridLayout_2.setHgap(3);
         gridLayout_2.setVgap(3);
+        shapeList2.setBackground(new Color(132, 217, 4));
+
 
         gridLayout_3 = (GridLayout) shapeList3.getLayout();//right most container
         gridLayout_3.setVgap(3);
         gridLayout_3.setHgap(3);
         shapeList3.setBounds(818, 284, 180, 420);
         add(shapeList3);
+        shapeList3.setBackground(new Color(132, 217, 4));
+
         
         shapeList4.setBounds(310, 27, 420, 180);//top most container
         add(shapeList4);
         gridLayout_4 = (GridLayout) shapeList4.getLayout();
         gridLayout_4.setVgap(3);
         gridLayout_4.setHgap(3);
+        shapeList4.setBackground(new Color(132, 217, 4));
+
 
         setBackground(new Color (175, 217, 85));
         
