@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Shape
+comment1.params=
+comment1.target=void\ rotateCoordinatesCW()
+comment10.params=x\ y\ color
+comment10.target=Shape(int,\ int,\ java.awt.Color)
+comment11.params=e
+comment11.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment12.params=currentBoard
+comment12.target=void\ setBoard(Board)
+comment2.params=
+comment2.target=void\ rotateCoordinatesCCW()
+comment3.params=
+comment3.target=void\ flipv()
+comment4.params=
+comment4.target=void\ fliph()
+comment5.params=
+comment5.target=void\ rotateC()
+comment6.params=
+comment6.target=void\ rotateCC()
+comment7.params=
+comment7.target=void\ flipHor()
+comment8.params=
+comment8.target=void\ flipVer()
+comment9.params=
+comment9.target=void\ makeShapes()
+numComments=13
