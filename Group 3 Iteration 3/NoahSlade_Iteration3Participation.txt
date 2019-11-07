@@ -1,0 +1,7 @@
+Noah Slade - Participation Log
+
+In this Iteration, I was in charge of making the 2 new Fully Dressed Use Case Descriptions as well
+as revising the old Use Cases and Sequence Diagrams based on the feedback that was received from
+Iteration 2. Advice and feedback of all my work was given by every member of the team to ensure that
+the best possible results of each objective was had. I also minorly helped in the making of the 
+Sequence Diagram for Saving a Game and the Logical Architecture Diagram.
