@@ -1,5 +1,4 @@
 import javax.swing.JButton;
-import image.*;
 // Custom Shape Button class to make shapes according to their coordinates
 class CustomShapeButton extends JButton{
 		

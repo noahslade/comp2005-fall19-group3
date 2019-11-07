@@ -1,0 +1,16 @@
+Hi,
+
+Instructions on how to comiple and run the code
+navigate in to the src Directory 
+compile all the files with this command "javac *.java"
+then write this command "java Blokus"
+
+Things to note about the jar file Blokus.jar
+I tried it on linux, windows, and mac at my place. It is working on all of these OS's but when I
+tried running it on library labnet systems it didn't work due to their outdated JRE environment version
+I was not able to update it since I am not the admin 
+If you run in to same error while running Blokus.jar then
+update your JRE environment with this command "sudo apt install default-jdk"
+
+And thing about the code we have Implemented functionalities for the red shapes only as of now 
+so run your tests on them only

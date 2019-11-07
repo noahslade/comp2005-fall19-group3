@@ -77,6 +77,13 @@ public class Board extends JPanel {
 
     // get the coordinates of the selected shape from the Shapes Class
     public void setSelection(int[][] selectedShapeCord) {
+                for(int i=0; i<board_button.length;i++){
+                  for(int j=0; j<board_button.length;j++){
+                          if (!board_button[i][j].isPlaced()){
+                                board_button[i][j].setBackground(Color.WHITE);
+                                System.out.println("Piece is placed");
+                                board_button[i][j].setColorSquare(Color.white); // Fix Later
+                                                    }}}
         this.selectedShapeCord = selectedShapeCord;
     }
 
@@ -178,6 +185,13 @@ public class Board extends JPanel {
         count_clockwisebtn.setIcon(new ImageIcon(getClass().getResource("image/counterclockwise.png")));
         count_clockwisebtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<board_button.length;i++){
+                  for(int j=0; j<board_button.length;j++){
+                          if (!board_button[i][j].isPlaced()){
+                                board_button[i][j].setBackground(Color.WHITE);
+                                System.out.println("Piece is placed");
+                                board_button[i][j].setColorSquare(Color.white); // Fix Later
+                                                    }}}
                 shapeList1.rotateCC();
             }
         });
@@ -191,6 +205,13 @@ public class Board extends JPanel {
         clockwise_btn.setBackground(new Color(242, 226, 5));
         clockwise_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<board_button.length;i++){
+                  for(int j=0; j<board_button.length;j++){
+                          if (!board_button[i][j].isPlaced()){
+                                board_button[i][j].setBackground(Color.WHITE);
+                                System.out.println("Piece is placed");
+                                board_button[i][j].setColorSquare(Color.white); // Fix Later
+                                                    }}}
                 shapeList1.rotateC();
             }
         });
@@ -203,6 +224,13 @@ public class Board extends JPanel {
 
         flip_vertical_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<board_button.length;i++){
+                  for(int j=0; j<board_button.length;j++){
+                          if (!board_button[i][j].isPlaced()){
+                                board_button[i][j].setBackground(Color.WHITE);
+                                System.out.println("Piece is placed");
+                                board_button[i][j].setColorSquare(Color.white); // Fix Later
+                                                    }}}
                 shapeList1.flipVer();
             }
         });
@@ -216,6 +244,13 @@ public class Board extends JPanel {
         flip_horizontal_btn.setBackground(new Color(242, 226, 5));
         flip_horizontal_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<board_button.length;i++){
+                  for(int j=0; j<board_button.length;j++){
+                          if (!board_button[i][j].isPlaced()){
+                                board_button[i][j].setBackground(Color.WHITE);
+                                System.out.println("Piece is placed");
+                                board_button[i][j].setColorSquare(Color.white); // Fix Later
+                                                    }}}
                 shapeList1.flipHor();
             }
         });
@@ -288,7 +323,7 @@ public class Board extends JPanel {
                                                     if (!board_button[i][j].isPlaced()){
                                                         board_button[i][j].setBackground(Color.WHITE);
                                                         System.out.println("Piece is placed");
-                                                        board_button[i][j].setColorSquare(Color.red); // Fix Later
+                                                        board_button[i][j].setColorSquare(Color.white); // Fix Later
                                                     }}}
                                         }
 
