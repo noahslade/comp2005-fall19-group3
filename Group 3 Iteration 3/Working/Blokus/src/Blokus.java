@@ -79,12 +79,12 @@ public class Blokus extends JFrame {
 		initiate_panel.setVisible(false);
 		color_panel=(ColorSelection) routes[1];
 		color_panel.setVisible(false);
-		initiate_panel.setBounds(400,250,460,310);
+		initiate_panel.setBounds(280,150,460,310);
 		initiate_panel.setBackground(new Color (86, 140, 48));
-		color_panel.setBounds(385,250,460,310);
+		color_panel.setBounds(280,150,460,310);
 		color_panel.setBackground(new Color (86, 140, 48));
 	    Board_panel=(Board) routes[3];
-		Board_panel.setBounds(0,0,1223,980);
+		Board_panel.setBounds(0,0,1015,815);
 		Board_panel.setVisible(false);
 		
 		
@@ -95,7 +95,7 @@ public class Blokus extends JFrame {
 		System.setProperty("swing.aatext", "true");
 	    
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1250, 1020);
+		setBounds(100, 100, 1025, 825);
 		setResizable(false);
 		setContentPane(Main_panel);
 		setLocationRelativeTo(null);
@@ -116,14 +116,14 @@ public class Blokus extends JFrame {
 		Main_panel.add(Board_panel);
 		
 		JLabel blokus_label = new JLabel("Blokus");
-		blokus_label.setBounds(550, 70, 185, 45);
+		blokus_label.setBounds(400, 70, 185, 45);
 		land_panel.add(blokus_label);
 		blokus_label.setFont(new Font("Tahoma", Font.BOLD, 55));
 		
 		JButton start_button = new JButton("Start");
 		start_button.setBackground(Color.GREEN);
 		start_button.setHorizontalAlignment(SwingConstants.CENTER);
-		start_button.setBounds(590, 300, 100, 50);
+		start_button.setBounds(450, 300, 100, 50);
 		land_panel.add(start_button);
 		start_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

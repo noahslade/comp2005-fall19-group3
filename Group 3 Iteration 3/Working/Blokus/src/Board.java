@@ -13,6 +13,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 import javax.swing.Timer;
+
+import java.io.IOException;
+import java.io.File;
+
+
 import java.util.concurrent.TimeUnit;
 
 public class Board extends JPanel {
@@ -33,10 +38,13 @@ public class Board extends JPanel {
     private int array_index=0;
 
     private int GridSize = 20;
+    
     //Creating an object of boardButton class to build an board of 20*20
     private BoardButton[][] board_button = new BoardButton[GridSize][GridSize];
+    
     //action contains the coordinate of the selected piece
     private int[][] selectedShapeCord = {{}};
+    
     //thisbutton is used to add mouse listen for game_board grids
     private JButton thisButton;
 
@@ -155,12 +163,12 @@ public class Board extends JPanel {
      * Constructor
      */
     public Board() {
-        this.setSize(1223, 980);
+        this.setSize(1011, 809);
         setLayout(null);
 
         // Making Alter the state panel which contains all the rotate and flip buttons
         JPanel alterState_pnl = new JPanel();
-        alterState_pnl.setBounds(1036, 219, 160, 485);
+        alterState_pnl.setBounds(864, 202, 129, 436);
         add(alterState_pnl);
         alterState_pnl.setLayout(null);
 
@@ -171,7 +179,7 @@ public class Board extends JPanel {
                 shapeList1.rotateCC();
             }
         });
-        count_clockwisebtn.setBounds(40, 11, 89, 68);
+        count_clockwisebtn.setBounds(24, 11, 89, 68);
         count_clockwisebtn.setBackground(new Color(242, 226, 5));
 
         alterState_pnl.add(count_clockwisebtn);
@@ -184,7 +192,7 @@ public class Board extends JPanel {
                 shapeList1.rotateC();
             }
         });
-        clockwise_btn.setBounds(40, 122, 89, 68);
+        clockwise_btn.setBounds(24, 122, 89, 68);
         alterState_pnl.add(clockwise_btn);
 
         JButton flip_vertical_btn = new JButton();
@@ -196,13 +204,13 @@ public class Board extends JPanel {
                 shapeList1.flipVer();
             }
         });
-        flip_vertical_btn.setBounds(40, 236, 89, 68);
+        flip_vertical_btn.setBounds(24, 236, 89, 68);
         alterState_pnl.add(flip_vertical_btn);
         alterState_pnl.setBackground(new Color(86, 140, 48));
 
         JButton flip_horizontal_btn = new JButton();
         flip_horizontal_btn.setIcon(new ImageIcon(getClass().getResource("image/switch_horizontal.png")));
-        flip_horizontal_btn.setBounds(40, 356, 89, 68);
+        flip_horizontal_btn.setBounds(24, 357, 89, 68);
         flip_horizontal_btn.setBackground(new Color(242, 226, 5));
         flip_horizontal_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -214,7 +222,7 @@ public class Board extends JPanel {
 
         //Game Board of 20*20
         JPanel GAME_BOARD = new JPanel();
-        GAME_BOARD.setBounds(228, 218, 580, 580);
+        GAME_BOARD.setBounds(227, 202, 420, 420);
         add(GAME_BOARD);
         GAME_BOARD.setLayout(new GridLayout(GridSize, GridSize));
 
@@ -296,7 +304,7 @@ public class Board extends JPanel {
 
 
         JButton saveButton = new JButton("SAVE");
-        saveButton.setBounds(1062, 11, 89, 42);
+        saveButton.setBounds(892, 11, 89, 42);
         saveButton.setBackground(new Color(86, 140, 48));
         saveButton.addActionListener(e->{
             //CHANGE THIS TO YOUR CURRENT DIRECTORY, ELSE YOU WILL GET IOEXCEPTION
@@ -340,7 +348,7 @@ public class Board extends JPanel {
         });
 
 
-        hintButton.setBounds(909, 11, 89, 42);
+        hintButton.setBounds(779, 11, 89, 42);
         hintButton.setBackground(new Color(86, 140, 48));
         add(hintButton);
 
@@ -348,7 +356,7 @@ public class Board extends JPanel {
         //Top label of Blokus
         JLabel top_label = new JLabel("BLOKUS");
         top_label.setFont(new Font("Tahoma", Font.BOLD, 17));
-        top_label.setBounds(38, 11, 81, 53);
+        top_label.setBounds(60, 11, 81, 53);
         add(top_label);
 
 
@@ -356,12 +364,12 @@ public class Board extends JPanel {
         gridLayout_1 = (GridLayout) shapeList1.getLayout();// left most container
         gridLayout_1.setVgap(3);
         gridLayout_1.setHgap(3);
-        shapeList1.setBounds(38, 284, 180, 420);
+        shapeList1.setBounds(43, 202, 180, 420);
         add(shapeList1);
         shapeList1.setBoard(this);
         shapeList1.setBackground(new Color(175, 217, 85));
 
-        shapeList2.setBounds(310, 809, 420, 160);//bottom container
+        shapeList2.setBounds(227, 624, 420, 160);//bottom container
         add(shapeList2);
         gridLayout_2 = (GridLayout) shapeList2.getLayout();
         gridLayout_2.setHgap(3);
@@ -372,12 +380,12 @@ public class Board extends JPanel {
         gridLayout_3 = (GridLayout) shapeList3.getLayout();//right most container
         gridLayout_3.setVgap(3);
         gridLayout_3.setHgap(3);
-        shapeList3.setBounds(818, 284, 180, 420);
+        shapeList3.setBounds(649, 202, 180, 420);
         add(shapeList3);
         shapeList3.setBackground(new Color(175, 217, 85));
 
 
-        shapeList4.setBounds(310, 27, 420, 180);//top most container
+        shapeList4.setBounds(227, 21, 420, 180);//top most container
         add(shapeList4);
         gridLayout_4 = (GridLayout) shapeList4.getLayout();
         gridLayout_4.setVgap(3);
