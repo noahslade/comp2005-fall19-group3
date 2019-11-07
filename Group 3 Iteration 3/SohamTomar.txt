@@ -1,1 +1,4 @@
 I confirm that I have participated in Iteration 3. Soham Tomar
+
+In this Iteration, I was in charge of adding a hint functionality to the game of Blokus. I was also incharge of making changes to the
+java implementaion according to the feedbacks of Iteration2.
