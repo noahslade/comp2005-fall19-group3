@@ -84,7 +84,7 @@ public class Blokus extends JFrame {
 		color_panel.setBounds(280,150,460,310);
 		color_panel.setBackground(new Color (86, 140, 48));
 	    Board_panel=(Board) routes[3];
-		Board_panel.setBounds(0,0,1015,815);
+		Board_panel.setBounds(0,0,1015,720);
 		Board_panel.setVisible(false);
 		
 		
@@ -95,7 +95,7 @@ public class Blokus extends JFrame {
 		System.setProperty("swing.aatext", "true");
 	    
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1025, 825);
+		setBounds(100, 100, 1025, 745);
 		setResizable(false);
 		setContentPane(Main_panel);
 		setLocationRelativeTo(null);

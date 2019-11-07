@@ -13,7 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 import javax.swing.Timer;
-import javax.swing.JDialog;
+
 import java.io.IOException;
 import java.io.File;
 
@@ -85,7 +85,6 @@ public class Board extends JPanel {
             if (board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].isPlaced() == false) {
 
                 board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setBackground(Color.red);
-		board_button[x+selectedShapeCord[i][0]][y+selectedShapeCord[i][1]].setColorSquare(Color.red);
                 board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setTaken(true);
                 int [] cord= {x + selectedShapeCord[i][0], y + selectedShapeCord[i][1]};
                 current_shape_cord[i] =cord;
@@ -164,12 +163,12 @@ public class Board extends JPanel {
      * Constructor
      */
     public Board() {
-        this.setSize(1011, 809);
+        this.setSize(1011, 716);
         setLayout(null);
 
         // Making Alter the state panel which contains all the rotate and flip buttons
         JPanel alterState_pnl = new JPanel();
-        alterState_pnl.setBounds(864, 202, 129, 436);
+        alterState_pnl.setBounds(849, 157, 129, 436);
         add(alterState_pnl);
         alterState_pnl.setLayout(null);
 
@@ -223,7 +222,7 @@ public class Board extends JPanel {
 
         //Game Board of 20*20
         JPanel GAME_BOARD = new JPanel();
-        GAME_BOARD.setBounds(227, 202, 420, 420);
+        GAME_BOARD.setBounds(227, 157, 420, 420);
         add(GAME_BOARD);
         GAME_BOARD.setLayout(new GridLayout(GridSize, GridSize));
 
@@ -308,60 +307,31 @@ public class Board extends JPanel {
         saveButton.setBounds(892, 11, 89, 42);
         saveButton.setBackground(new Color(86, 140, 48));
         saveButton.addActionListener(e->{
-            String fileName = "src/savedData.txt";// . is for current directory
+            //CHANGE THIS TO YOUR CURRENT DIRECTORY, ELSE YOU WILL GET IOEXCEPTION
+            String fileName = "C:\\Users\\johan\\git\\comp2005-fall19-group3\\Group 3 Iteration 2\\blokus\\src\\test.txt";
 
             //Delete the contents of the last save
             File file = new File(fileName);
             file.delete();
             SaveManager saveMyData = new SaveManager(fileName, true); // We want to append data to the text file.
-                if(file.exists())
-        	{
-        		
-        		JDialog confirmationDelete = new JDialog();
-        		confirmationDelete.setSize(400, 500);
-        		confirmationDelete.setTitle("Warning Data Will Be Overwritten");
-        		JPanel options = new JPanel();
-        		options.setLayout(new GridLayout(2,1));
-        		JButton confirmDel = new JButton("Confirm");
-        		
-        		confirmDel.addActionListener(g ->
-        		{
-        			file.delete();
-        			analyzeStateBoard(saveMyData);
-        			confirmationDelete.dispose();
-        		});
-        		
-        		JButton cancelDel = new JButton("Cancel");
-        		cancelDel.addActionListener(f-> {
-        			confirmationDelete.dispose();
-        		});
-        		
-        		options.add(confirmDel);
-        		options.add(cancelDel);
-        		confirmationDelete.add(options);
-        		
-        		confirmationDelete.setVisible(true);
-        		
-        	
-        		
-        		
-        		
-        		
-        		
-        	}
-        	else
-        	{
-        		analyzeStateBoard(saveMyData);
-        	}
-        	
-        	
-        	
-        	
-        	
-        	
-        	
-        	
-        	 });
+
+            //This part that deals with logic should be in a different layer
+            for(int i=0;i<GridSize;i++) {
+                for(int j=0;j<GridSize;j++) {
+                    if(board_button[i][j].isPlaced())
+                    {
+                        try {
+
+                            saveMyData.writeToFile(board_button[i][j].getIndex()[0] + ","+ board_button[i][j].getIndex()[1] + "," + board_button[i][j].getColorSquare());
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }//+ board_button[i][j].getColorSquare());
+
+                        //System.out.println(board_button[i][j].getIndex()[0] + ","+ board_button[i][j].getIndex()[1]);
+                    }
+
+                }}});
 
         add(saveButton);
 
@@ -394,12 +364,12 @@ public class Board extends JPanel {
         gridLayout_1 = (GridLayout) shapeList1.getLayout();// left most container
         gridLayout_1.setVgap(3);
         gridLayout_1.setHgap(3);
-        shapeList1.setBounds(43, 202, 180, 420);
+        shapeList1.setBounds(43, 157, 180, 420);
         add(shapeList1);
         shapeList1.setBoard(this);
         shapeList1.setBackground(new Color(175, 217, 85));
 
-        shapeList2.setBounds(227, 624, 420, 160);//bottom container
+        shapeList2.setBounds(227, 580, 420, 130);//bottom container
         add(shapeList2);
         gridLayout_2 = (GridLayout) shapeList2.getLayout();
         gridLayout_2.setHgap(3);
@@ -410,12 +380,12 @@ public class Board extends JPanel {
         gridLayout_3 = (GridLayout) shapeList3.getLayout();//right most container
         gridLayout_3.setVgap(3);
         gridLayout_3.setHgap(3);
-        shapeList3.setBounds(649, 202, 180, 420);
+        shapeList3.setBounds(649, 157, 180, 420);
         add(shapeList3);
         shapeList3.setBackground(new Color(175, 217, 85));
 
 
-        shapeList4.setBounds(227, 21, 420, 180);//top most container
+        shapeList4.setBounds(227, 23, 420, 130);//top most container
         add(shapeList4);
         gridLayout_4 = (GridLayout) shapeList4.getLayout();
         gridLayout_4.setVgap(3);
@@ -426,26 +396,4 @@ public class Board extends JPanel {
         setBackground(new Color(175, 217, 85));
 
     }
-/**
-	 * Assistant function of action event save gamto make my code more cohesive. 
-	 */
-	private void analyzeStateBoard(SaveManager saveMyData)
-	{
-		 for(int i=0;i<GridSize;i++) {
-             for(int j=0;j<GridSize;j++) {
-           	  if(board_button[i][j].isPlaced())
-           	  {
-           		  try {
-           			
-						saveMyData.writeToFile(board_button[i][j].getIndex()[0] + ","+ board_button[i][j].getIndex()[1] + "," + board_button[i][j].getColorSquare());
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-           		
-           		  
-           	  }
-                 
-   }}
-	}
 }
