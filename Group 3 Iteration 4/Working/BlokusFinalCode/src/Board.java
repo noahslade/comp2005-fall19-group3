@@ -151,11 +151,11 @@ public class Board extends JPanel {
     }
     //Main Hitman for the hint Button which go through every already placed shape and find out the places on the board where new selected shapes could be placed
     private void hint(int[][] actions) {
-        for (int i = 0; i < array_index; i++) {
-            for(int j=0;j<placed_shapes_cord[i].length;j++){
+//        for (int i = 0; i < array_index; i++) {
+//            for(int j=0;j<placed_shapes_cord[i].length;j++){
             for (int x = -GridSize; x < GridSize; x++) {
                 for (int y = -GridSize; y <= GridSize; y++) {
-                    if ((placed_shapes_cord[i][j][0] + x >= 0 && placed_shapes_cord[i][j][0] + x < this.GridSize) && (placed_shapes_cord[i][j][1] + y >= 0 && placed_shapes_cord[i][j][1] + y < this.GridSize)) {
+//                    if ((placed_shapes_cord[i][j][0] + x >= 0 && placed_shapes_cord[i][j][0] + x < this.GridSize) && (placed_shapes_cord[i][j][1] + y >= 0 && placed_shapes_cord[i][j][1] + y < this.GridSize)) {
                         int k = checkGrid(x, y, actions);
                         if (k == actions.length) {
 
@@ -167,7 +167,11 @@ public class Board extends JPanel {
                             } catch (Exception e) {
                                 e.printStackTrace(); }
                         } }
-                    } } } } }}
+                    }
+                }
+            }
+//    }
+
 
     /**
      * Constructor
