@@ -85,6 +85,7 @@ public class Board extends JPanel {
 
     // get the coordinates of the selected shape from the Shapes Class
     public void setSelection(int[][] selectedShapeCord) {
+    	setDefaultColor();
         this.selectedShapeCord = selectedShapeCord;
     }
 
