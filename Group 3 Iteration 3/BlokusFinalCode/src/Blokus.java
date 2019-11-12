@@ -22,8 +22,10 @@ public class Blokus extends JFrame {
 	private Init initiate_panel;
 	private ColorSelection color_panel;
 	private Board Board_panel;
-	private JPanel[] routes= {new Init(this),new ColorSelection(this),new JPanel(),new Board()};
-	
+	private JPanel[] routes= {new Init(this),new ColorSelection(this), new JPanel() ,new Board()};
+	private int humanPlayers;
+	private int cpuPlayers;
+	private int difficultyLevel;
 
 	/**
 	 * Launch the application.
@@ -59,11 +61,21 @@ public class Blokus extends JFrame {
 			routes[1].setVisible(false);
 			routes[2].setVisible(false);
 			routes[3].setVisible(true);
-			
-			
+		}
+		else if (route=="land"){
+			routes[0].setVisible(false);
+			routes[1].setVisible(false);
+			routes[2].setVisible(true);
+			routes[3].setVisible(false);
 		}
 	}
 
+	public void gameInfo(int humanPlayers, int cpuPlayers, int difficultyLevel) {
+		this.humanPlayers = humanPlayers;
+		this.cpuPlayers = cpuPlayers;
+		this.difficultyLevel = difficultyLevel;
+	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -79,8 +91,6 @@ public class Blokus extends JFrame {
 		initiate_panel.setVisible(false);
 		color_panel=(ColorSelection) routes[1];
 		color_panel.setVisible(false);
-		initiate_panel.setBounds(280,150,460,310);
-		initiate_panel.setBackground(new Color (86, 140, 48));
 		color_panel.setBounds(280,150,460,310);
 		color_panel.setBackground(new Color (86, 140, 48));
 	    Board_panel=(Board) routes[3];
