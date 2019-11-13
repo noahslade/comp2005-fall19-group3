@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 public class Init extends JPanel {
 
+	private JButton[] humanButtons;
 	private JButton[] cpuButtons;
+	private JButton[] difficultyButtons;
+	private JButton[] randomColorsButtons;
 	
 	private int humanPlayers;
 	private int cpuPlayers;
@@ -52,6 +55,8 @@ public class Init extends JPanel {
 		mainMenu.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				main.setRoute("land");
+				for(JButton curButton:humanButtons){
+
 				
 			}
 		});
@@ -85,20 +90,21 @@ public class Init extends JPanel {
 	private void randomColorSelector() {
 		randomColorPanel = new JPanel();
 		
-		JButton yesRandom = new JButton("Yes");
-		JButton noRandom = new JButton("No");
+		randomColorButtons = new JButton[2]
+		randomColorButtons[0]= new JButton("Yes");
+		randomColorButtons[1]= new JButton("No");
 		
 		yesRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomColors = true;
-				noRandom.setVisible(false);
+				randomColorButtons[1].setVisible(false);
 			}
 		});
 		
 		noRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomColors = false;
-				yesRandom.setVisible(false);
+				randomColorButtons[0].setVisible(false);
 			}
 		});
 		
@@ -113,31 +119,33 @@ public class Init extends JPanel {
 	private void makeDifficultyOptions() {
 
 		difficultyPanel = new JPanel();
+
+		difficultyButtons = new JButton[3]
 		
-		JButton easyButton = new JButton("Easy");
-		JButton mediumButton = new JButton("Medium");
-		JButton hardButton = new JButton("Hard");
+		difficultyButtons[0]= new JButton("Easy");
+		difficultyButtons[1]= new JButton("Medium");
+		difficultyButtons[2]= new JButton("Hard");
 
 		easyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mediumButton.setVisible(false);
-				hardButton.setVisible(false);
+				difficultyButtons[1].setVisible(false);
+				difficultyButtons[2].setVisible(false);
 				difficultyLevel = 0;
 			}
 		});
 		
 		mediumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				easyButton.setVisible(false);
-				hardButton.setVisible(false);
+				difficultyButtons[0].setVisible(false);
+				difficultyButtons[2].setVisible(false);
 				difficultyLevel = 1;
 			}
 		});
 		
 		hardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				easyButton.setVisible(false);
-				mediumButton.setVisible(false);
+				difficultyButtons[0].setVisible(false);
+				difficultyButtons[1].setVisible(false);
 				difficultyLevel = 2;
 			}
 		});
@@ -167,18 +175,19 @@ public class Init extends JPanel {
 	private void makePlayerOptions() {
 		humanPlayerPanel = new JPanel();
 		
-		JButton onePlayer = new JButton ("1");
-		JButton twoPlayer = new JButton ("2");
-		JButton threePlayer = new JButton ("3");
-		JButton fourPlayer = new JButton ("4");
+		humanButtons = new JButton[4]
+		himanButtons[0] = new JButton ("1");
+		humanButtons[1]  = new JButton ("2");
+		humanButtons[2]  = new JButton ("3");
+		humanButtons[3]  = new JButton ("4");
 		
 		onePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 1;
 				activateCPUOptions(1);
-				twoPlayer.setVisible(false);
-				threePlayer.setVisible(false);
-				fourPlayer.setVisible(false);
+				humanButtons[1].setVisible(false);
+				humanButtons[2].setVisible(false);
+				humanButtons[3].setVisible(false);
 			}
 		});
 		
@@ -186,9 +195,9 @@ public class Init extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 2;
 				activateCPUOptions(2);
-				onePlayer.setVisible(false);
-				threePlayer.setVisible(false);
-				fourPlayer.setVisible(false);
+				humanButtons[0].setVisible(false);
+				humanButtons[2].setVisible(false);
+				humanButtons[3].setVisible(false);
 			}
 		});
 		
@@ -196,9 +205,9 @@ public class Init extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 3;
 				activateCPUOptions(3);
-				onePlayer.setVisible(false);
-				twoPlayer.setVisible(false);
-				fourPlayer.setVisible(false);
+				humanButtons[0].setVisible(false);
+				humanButtons[1].setVisible(false);
+				humanButtons[3].setVisible(false);
 			}
 		});
 		
@@ -206,9 +215,9 @@ public class Init extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 4;
 				activateCPUOptions(4);
-				onePlayer.setVisible(false);
-				twoPlayer.setVisible(false);
-				threePlayer.setVisible(false);
+				humanButtons[0].setVisible(false);
+				humanButtons[1].setVisible(false);
+				humanButtons[2].setVisible(false);
 			}
 		});
 	
