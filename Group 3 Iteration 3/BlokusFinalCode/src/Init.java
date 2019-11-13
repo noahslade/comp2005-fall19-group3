@@ -6,10 +6,10 @@ public class Init extends JPanel {
 	private JButton[] humanButtons;
 	private JButton[] cpuButtons;
 	private JButton[] difficultyButtons;
-	private JButton[] randomColorsButtons;
+	private JButton[] randomColorButtons;
 	
 	private int humanPlayers;
-	private int cpuPlayers;
+	private int cpuPlayers = 0;
 	private int difficultyLevel;
 	private boolean randomColors;
 	private JPanel humanPlayerPanel;
@@ -55,8 +55,18 @@ public class Init extends JPanel {
 		mainMenu.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				main.setRoute("land");
-				for(JButton curButton:humanButtons){
-
+				for(JButton curButton:humanButtons) {
+					curButton.setVisible(true);
+				}
+				for(JButton curButton: cpuButtons) {
+					curButton.setVisible(false);
+				}
+				for(JButton curButton: difficultyButtons) {
+					curButton.setVisible(true);
+				}
+				for(JButton curButton: randomColorButtons) {
+					curButton.setVisible(true);
+				}
 				
 			}
 		});
@@ -90,18 +100,18 @@ public class Init extends JPanel {
 	private void randomColorSelector() {
 		randomColorPanel = new JPanel();
 		
-		randomColorButtons = new JButton[2]
+		randomColorButtons = new JButton[2];
 		randomColorButtons[0]= new JButton("Yes");
 		randomColorButtons[1]= new JButton("No");
 		
-		yesRandom.addActionListener(new ActionListener() {
+		randomColorButtons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomColors = true;
 				randomColorButtons[1].setVisible(false);
 			}
 		});
 		
-		noRandom.addActionListener(new ActionListener() {
+		randomColorButtons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				randomColors = false;
 				randomColorButtons[0].setVisible(false);
@@ -109,8 +119,8 @@ public class Init extends JPanel {
 		});
 		
 		randomColorPanel.setBackground(new Color (86, 140, 48));
-		randomColorPanel.add(yesRandom);
-		randomColorPanel.add(noRandom);
+		randomColorPanel.add(randomColorButtons[0]);
+		randomColorPanel.add(randomColorButtons[1]);
 		
 		add(randomColorPanel);
 		
@@ -120,13 +130,13 @@ public class Init extends JPanel {
 
 		difficultyPanel = new JPanel();
 
-		difficultyButtons = new JButton[3]
+		difficultyButtons = new JButton[3];
 		
 		difficultyButtons[0]= new JButton("Easy");
 		difficultyButtons[1]= new JButton("Medium");
 		difficultyButtons[2]= new JButton("Hard");
 
-		easyButton.addActionListener(new ActionListener() {
+		difficultyButtons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				difficultyButtons[1].setVisible(false);
 				difficultyButtons[2].setVisible(false);
@@ -134,7 +144,7 @@ public class Init extends JPanel {
 			}
 		});
 		
-		mediumButton.addActionListener(new ActionListener() {
+		difficultyButtons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				difficultyButtons[0].setVisible(false);
 				difficultyButtons[2].setVisible(false);
@@ -142,7 +152,7 @@ public class Init extends JPanel {
 			}
 		});
 		
-		hardButton.addActionListener(new ActionListener() {
+		difficultyButtons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				difficultyButtons[0].setVisible(false);
 				difficultyButtons[1].setVisible(false);
@@ -151,9 +161,10 @@ public class Init extends JPanel {
 		});
 		
 		difficultyPanel.setBackground(new Color (86, 140, 48));
-		difficultyPanel.add(easyButton);
-		difficultyPanel.add(mediumButton);
-		difficultyPanel.add(hardButton);
+		for(JButton difficultyButton:difficultyButtons) {
+			difficultyPanel.add(difficultyButton);
+		}
+		
 		add(difficultyPanel);
 	}
 	
@@ -175,13 +186,13 @@ public class Init extends JPanel {
 	private void makePlayerOptions() {
 		humanPlayerPanel = new JPanel();
 		
-		humanButtons = new JButton[4]
-		himanButtons[0] = new JButton ("1");
+		humanButtons = new JButton[4];
+		humanButtons[0] = new JButton ("1");
 		humanButtons[1]  = new JButton ("2");
 		humanButtons[2]  = new JButton ("3");
 		humanButtons[3]  = new JButton ("4");
 		
-		onePlayer.addActionListener(new ActionListener() {
+		humanButtons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 1;
 				activateCPUOptions(1);
@@ -191,7 +202,7 @@ public class Init extends JPanel {
 			}
 		});
 		
-		twoPlayer.addActionListener(new ActionListener() {
+		humanButtons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 2;
 				activateCPUOptions(2);
@@ -201,7 +212,7 @@ public class Init extends JPanel {
 			}
 		});
 		
-		threePlayer.addActionListener(new ActionListener() {
+		humanButtons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 3;
 				activateCPUOptions(3);
@@ -211,7 +222,7 @@ public class Init extends JPanel {
 			}
 		});
 		
-		fourPlayer.addActionListener(new ActionListener() {
+		humanButtons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				humanPlayers = 4;
 				activateCPUOptions(4);
@@ -222,10 +233,10 @@ public class Init extends JPanel {
 		});
 	
 		humanPlayerPanel.setBackground(new Color (86, 140, 48));
-		humanPlayerPanel.add(onePlayer);
-		humanPlayerPanel.add(twoPlayer);
-		humanPlayerPanel.add(threePlayer);
-		humanPlayerPanel.add(fourPlayer);
+		
+		for (JButton humanButton:humanButtons) {
+			humanPlayerPanel.add(humanButton);
+		}
 		
 		add(humanPlayerPanel);
 	}
@@ -234,60 +245,52 @@ public class Init extends JPanel {
 		
 		cpuPlayerPanel = new JPanel();
 
-		JButton zeroCPU = new JButton ("0");
-		JButton oneCPU = new JButton ("1");
-		JButton twoCPU = new JButton ("2");
-		JButton threeCPU = new JButton ("3");
+		cpuButtons = new JButton[4];
+		cpuButtons[0] = new JButton ("0");
+		cpuButtons[1] =new JButton ("1");
+		cpuButtons[2] = new JButton ("2");
+		cpuButtons[3] = new JButton ("3");
+
 		
-		zeroCPU.addActionListener(new ActionListener() {
+		cpuButtons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpuPlayers = 0;
-				oneCPU.setVisible(false);
-				twoCPU.setVisible(false);
-				threeCPU.setVisible(false);
+				cpuButtons[1].setVisible(false);
+				cpuButtons[2].setVisible(false);
+				cpuButtons[3].setVisible(false);
 			}
 		});
-		oneCPU.addActionListener(new ActionListener() {
+		cpuButtons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpuPlayers = 1;
-				zeroCPU.setVisible(false);
-				twoCPU.setVisible(false);
-				threeCPU.setVisible(false);
+				cpuButtons[0].setVisible(false);
+				cpuButtons[2].setVisible(false);
+				cpuButtons[3].setVisible(false);
 			}
 		});
-		twoCPU.addActionListener(new ActionListener() {
+		cpuButtons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpuPlayers = 2;
-				zeroCPU.setVisible(false);
-				oneCPU.setVisible(false);
-				threeCPU.setVisible(false);
+				cpuButtons[0].setVisible(false);
+				cpuButtons[1].setVisible(false);
+				cpuButtons[3].setVisible(false);
 			}
 		});
-		threeCPU.addActionListener(new ActionListener() {
+		cpuButtons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cpuPlayers = 3;
-				zeroCPU.setVisible(false);
-				oneCPU.setVisible(false);
-				twoCPU.setVisible(false);
+				cpuButtons[0].setVisible(false);
+				cpuButtons[1].setVisible(false);
+				cpuButtons[2].setVisible(false);
 			}
 		});
 		
-		cpuButtons = new JButton[4];
-		cpuButtons[0] = zeroCPU;
-		cpuButtons[1] = oneCPU;
-		cpuButtons[2] = twoCPU;
-		cpuButtons[3] = threeCPU;
-		
-		zeroCPU.setVisible(false);
-		oneCPU.setVisible(false);
-		twoCPU.setVisible(false);
-		threeCPU.setVisible(false);
+		for (JButton cpuButton:cpuButtons) {
+			cpuButton.setVisible(false);
+			cpuPlayerPanel.add(cpuButton);
+		}
 		
 		cpuPlayerPanel.setBackground(new Color (86, 140, 48));
-		cpuPlayerPanel.add(zeroCPU);
-		cpuPlayerPanel.add(oneCPU);
-		cpuPlayerPanel.add(twoCPU);
-		cpuPlayerPanel.add(threeCPU);
 		
 		add(cpuPlayerPanel);
 	}
