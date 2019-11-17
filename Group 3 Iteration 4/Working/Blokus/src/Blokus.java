@@ -17,13 +17,16 @@ import javax.swing.SwingConstants;
 
 public class Blokus extends JFrame {
 
+	public JPanel getMain_panel() {
+		return Main_panel;
+	}
+
 	private JPanel Main_panel;
 	private JPanel land_panel;
 	private Init initiate_panel;
 	private ColorSelection color_panel;
 	private Board Board_panel;
-	private JPanel[] routes= {new Init(this),new ColorSelection(this),new JPanel(),new Board()};
-	
+	private JPanel[] routes= {new Init(this),new ColorSelection(this), new JPanel() ,new JPanel()};
 
 	/**
 	 * Launch the application.
@@ -33,6 +36,7 @@ public class Blokus extends JFrame {
 			public void run() {
 				try {
 					Blokus frame = new Blokus();
+					frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,11 +63,26 @@ public class Blokus extends JFrame {
 			routes[1].setVisible(false);
 			routes[2].setVisible(false);
 			routes[3].setVisible(true);
-			
-			
 		}
+		else if (route=="land"){
+			routes[0].setVisible(false);
+			routes[1].setVisible(false);
+			routes[2].setVisible(true);
+			routes[3].setVisible(false);
+		}
+//		else if(route =="Land"){
+//			getMain_panel().add(land_panel);
+//			getMain_panel().add(initiate_panel);
+//			getMain_panel().add(color_panel);
+//		}
 	}
 
+//	public void gameInfo(int humanPlayers, int cpuPlayers, int difficultyLevel) {
+//		this.humanPlayers = humanPlayers;
+//		this.cpuPlayers = cpuPlayers;
+//		this.difficultyLevel = difficultyLevel;
+//	}
+//
 	/**
 	 * Create the frame.
 	 */
@@ -79,13 +98,11 @@ public class Blokus extends JFrame {
 		initiate_panel.setVisible(false);
 		color_panel=(ColorSelection) routes[1];
 		color_panel.setVisible(false);
-		initiate_panel.setBounds(280,150,460,310);
-		initiate_panel.setBackground(new Color (86, 140, 48));
 		color_panel.setBounds(280,150,460,310);
 		color_panel.setBackground(new Color (86, 140, 48));
-	    Board_panel=(Board) routes[3];
-		Board_panel.setBounds(0,0,1015,720);
-		Board_panel.setVisible(false);
+//	    Board_panel=routes[3];
+//		Board_panel.setBounds(0,0,1015,720);
+//		Board_panel.setVisible(false);
 		
 		
 		
@@ -113,7 +130,7 @@ public class Blokus extends JFrame {
 		Main_panel.add(initiate_panel);
 		Main_panel.add(color_panel);
 		Main_panel.add(land_panel);
-		Main_panel.add(Board_panel);
+//		Main_panel.add(Board_panel);
 		
 		JLabel blokus_label = new JLabel("Blokus");
 		blokus_label.setBounds(400, 70, 185, 45);
@@ -133,5 +150,9 @@ public class Blokus extends JFrame {
 		start_button.setFont(new Font("Tahoma", Font.BOLD, 25));
 
 		Main_panel.setBackground(new Color (175, 217, 85));
+	}
+
+	public Object getObjectAtIndexRoute(int i) {
+		return routes[i];
 	}
 }

@@ -7,7 +7,40 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+
 public class ColorSelection extends JPanel {
+	private int playerColor=0; // Player's Color starting with player 1 color
+	private int numPlayers;
+	private int difficulty;
+	private Color [] color_array= new Color[4];
+
+
+	public void injectData(int numberOfPlayers, int difficulty){
+		this.numPlayers=numberOfPlayers;
+		this.difficulty=difficulty;
+		this.color_array=new Color[4];
+	}
+
+	public void setColor(Color color ,JButton button){
+		if (playerColor<numPlayers) {
+			color_array[playerColor] = color;
+			button.setVisible(false);
+			playerColor+=1;
+		}
+	}
+
+	public void setColorAI(){
+		int i =numPlayers;
+		while (i<4){
+			if(!Arrays.asList(color_array).contains(Color.RED)){color_array[i]=Color.RED;}
+			else if(!Arrays.asList(color_array).contains(Color.ORANGE)){color_array[i]=Color.ORANGE;}
+			else if(!Arrays.asList(color_array).contains(Color.GREEN)){color_array[i]=Color.GREEN;}
+			else {color_array[i]=Color.BLUE;}
+			i++;
+		}
+	}
+
 
 	/**
 	 * Create the panel.
@@ -22,17 +55,18 @@ public class ColorSelection extends JPanel {
 		
 		
 		// Making Color panels for the players to select color
-		JButton yellow_color = new JButton("Yellow");
-		yellow_color.setBackground(Color.YELLOW);
-		yellow_color.setBorderPainted(false);
-		yellow_color.setOpaque(true);
-		yellow_color.addActionListener(new ActionListener() {
+		JButton orange_color = new JButton("ORANGE");
+		orange_color.setBackground(Color.ORANGE);
+		orange_color.setBorderPainted(false);
+		orange_color.setOpaque(true);
+		orange_color.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setColor(Color.ORANGE,orange_color);
 			}
 		});
-		yellow_color.setFont(new Font("Tahoma", Font.BOLD, 12));
-		yellow_color.setBounds(121, 121, 89, 38);
-		add(yellow_color);
+		orange_color.setFont(new Font("Tahoma", Font.BOLD, 12));
+		orange_color.setBounds(121, 121, 89, 38);
+		add(orange_color);
 		
 		JButton blue_color = new JButton("Blue");
 		blue_color.setForeground(Color.WHITE);
@@ -41,6 +75,11 @@ public class ColorSelection extends JPanel {
 		blue_color.setBounds(208, 121, 89, 38);
 		blue_color.setBorderPainted(false);
 		blue_color.setOpaque(true);
+		blue_color.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setColor(Color.BLUE,blue_color);
+			}
+		});
 		add(blue_color);
 		
 		JButton green_color = new JButton("Green");
@@ -49,6 +88,7 @@ public class ColorSelection extends JPanel {
 		green_color.setOpaque(true);
 		green_color.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setColor(Color.GREEN,green_color);
 			}
 		});
 		green_color.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -61,6 +101,11 @@ public class ColorSelection extends JPanel {
 		red_color.setOpaque(true);
 		red_color.setFont(new Font("Tahoma", Font.BOLD, 12));
 		red_color.setBounds(208, 159, 89, 38);
+		red_color.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setColor(Color.RED,red_color);
+			}
+		});
 		add(red_color);
 		
 		// Finished with color panels
@@ -71,9 +116,14 @@ public class ColorSelection extends JPanel {
 		back_panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+//				main.setObjectAtIndexRoute(0);
 				main.setRoute("init");
+				orange_color.setVisible(true);
+				red_color.setVisible(true);
+				blue_color.setVisible(true);
+				green_color.setVisible(true);
+				playerColor=0;
 			}
-			
 		});
 		back_panel.setBackground(Color.RED);
 		back_panel.setBounds(10, 261, 59, 28);
@@ -83,7 +133,13 @@ public class ColorSelection extends JPanel {
 		back_label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+//				main.setObjectAtIndexRoute(0);
 				main.setRoute("init");
+				orange_color.setVisible(true);
+				red_color.setVisible(true);
+				blue_color.setVisible(true);
+				green_color.setVisible(true);
+				playerColor=0;
 			}
 		});
 		back_label.setBackground(Color.RED);
@@ -97,7 +153,12 @@ public class ColorSelection extends JPanel {
 		start_panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				main.setRoute("board");
+				setColorAI();
+				main.getMain_panel().removeAll();
+				Board thisGameBoard=new Board(color_array, difficulty, numPlayers, main);
+				main.add(thisGameBoard);
+				main.revalidate();
+				main.repaint();
 			}
 		});
 		
@@ -105,7 +166,11 @@ public class ColorSelection extends JPanel {
 		start_lbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				main.setRoute("board");
+				setColorAI();
+				main.getMain_panel().removeAll();
+				main.add(new Board(color_array, difficulty, numPlayers, main));
+				main.revalidate();
+				main.repaint();
 			}
 		});
 		start_lbl.setFont(new Font("Tahoma", Font.BOLD, 12));
