@@ -315,7 +315,6 @@ public class Shape extends JPanel {
 		else if (color == 3){
 			texture = "image/greenDots.jpg";
 		}
-		System.out.println(texture);
 		makeShapes();
 	}
 	public void setBoard(Board currentBoard) {

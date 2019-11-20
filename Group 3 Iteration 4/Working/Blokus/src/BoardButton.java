@@ -1,4 +1,5 @@
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 //Board Button class to get the user selected place on the board, then we use our coordinates of shape to place a piece on the board
@@ -40,6 +41,6 @@ class BoardButton extends JButton{
 			color_game_square = playerColor;
 		}
 		public void highlight (){
-			setBackground(Color.GRAY);
+			setIcon(new ImageIcon(getClass().getResource("image/white.png")));
 		}
 	}
