@@ -304,16 +304,16 @@ public class Shape extends JPanel {
 			add(shapePanels[i]);
 		}
 		if (color == 0){
-			texture = "image/redStripes.png";
+			texture = "image/redStripes.jpeg";
 		}
 		else if (color == 1){
-			texture = "image/blueStripes.png";
+			texture = "image/blueStripes.jpeg";
 		}
 		else if (color == 2){
 			texture = "image/yellowCross.png";
 		}
 		else if (color == 3){
-			texture = "image/greenDots.png";
+			texture = "image/greenDots.jpg";
 		}
 		System.out.println(texture);
 		makeShapes();

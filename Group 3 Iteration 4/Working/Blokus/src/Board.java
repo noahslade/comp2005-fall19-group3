@@ -483,7 +483,7 @@ public class Board extends JPanel {
                 board_button[i][j] = new BoardButton(i, j);
                 thisButton = board_button[i][j];
 
-                thisButton.setBackground(Color.white);
+                thisButton.setIcon(new ImageIcon(getClass().getResource("image/gray.jpg")));
 
                 thisButton.addMouseListener(new MouseAdapter() {
                     @Override
@@ -510,7 +510,7 @@ public class Board extends JPanel {
                             int y = ((BoardButton) e.getSource()).getIndex()[1];
                             for (int i = 0; i < selectedShapeCord.length; i++) {
                                 if (!board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].isPlaced()) {
-                                    board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setBackground(Color.white);
+                                    board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setIcon(new ImageIcon(getClass().getResource("image/gray.jpg")));
                                 }
                             }
                         } catch (Exception s) {
