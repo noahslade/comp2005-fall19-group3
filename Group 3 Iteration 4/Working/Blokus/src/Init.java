@@ -7,24 +7,20 @@ public class Init extends JPanel {
 	private JButton[] humanButtons;
 	private JButton[] cpuButtons;
 	private JButton[] difficultyButtons;
-	private JButton[] randomColorButtons;
 
 	private int humanPlayers;
 	private int cpuPlayers = 0;
 	private int difficultyLevel;
-	private int SelectRandomColor=0;
-	private boolean randomColors;
 	private JPanel humanPlayerPanel;
 	private JPanel cpuPlayerPanel;
 	private JPanel difficultyPanel;
-	private JPanel randomColorPanel;
 	/**
 	 * Create the panel.
 	 * @param main 
 	 */
 	public Init(Blokus main) {
 
-		setLayout(new GridLayout(5,2));
+		setLayout(new GridLayout(4,2));
 		setBounds(230,120,700,400);
 		setBackground(new Color (86, 140, 48));
 		
@@ -46,12 +42,6 @@ public class Init extends JPanel {
 		
 		makeDifficultyOptions();
 		
-		JLabel lblRandomColor = new JLabel("Random Color");
-		lblRandomColor.setFont(new Font("Tahoma", Font.BOLD, 15));
-		add(lblRandomColor);
-
-		randomColorSelector();
-		
 		JPanel mainMenu = new JPanel();
 		mainMenu.setBackground(Color.red);
 		mainMenu.addMouseListener(new MouseAdapter() {
@@ -66,12 +56,8 @@ public class Init extends JPanel {
 				for(JButton curButton: difficultyButtons) {
 					curButton.setVisible(true);
 				}
-				for(JButton curButton: randomColorButtons) {
-					curButton.setVisible(true);
-				}
 				humanPlayers=0;
 				difficultyLevel=0;
-				SelectRandomColor=0;
 				
 			}
 		});
@@ -88,20 +74,12 @@ public class Init extends JPanel {
 			@Override
 			
 			public void mousePressed(MouseEvent e) {
-//				main.gameInfo(humanPlayers, cpuPlayers, difficultyLevel);
-				if (!randomColors) {
-					//main.setObjectAtIndexRoute(1);
-					if(humanPlayers>0 && difficultyLevel>0 && SelectRandomColor==1){
-					((ColorSelection)main.getObjectAtIndexRoute(1)).injectData(humanPlayers, difficultyLevel);
-					main.setRoute("color");
-					}}
-				else {if(humanPlayers>0 && difficultyLevel>0 && SelectRandomColor==2){
-					Color [] color_array={Color.ORANGE, Color.RED, Color.GREEN, Color.BLUE};
+				if(humanPlayers>0 && difficultyLevel>0){
 					main.getMain_panel().removeAll();
-					main.add(new Board(color_array,difficultyLevel, humanPlayers, main));
+					main.add(new Board(difficultyLevel, humanPlayers, main));
 					main.revalidate();
 					main.repaint();
-				}}
+				}
 				for(JButton curButton:humanButtons) {
 					curButton.setVisible(true);
 				}
@@ -111,9 +89,6 @@ public class Init extends JPanel {
 				for(JButton curButton: difficultyButtons) {
 					curButton.setVisible(true);
 				}
-				for(JButton curButton: randomColorButtons) {
-					curButton.setVisible(true);
-				}
 			}
 		});
 		
@@ -121,36 +96,7 @@ public class Init extends JPanel {
 		nextLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		next.add(nextLabel);
 	}
-	private void randomColorSelector() {
-		randomColorPanel = new JPanel();
-		
-		randomColorButtons = new JButton[2];
-		randomColorButtons[0]= new JButton("Yes");
-		randomColorButtons[1]= new JButton("No");
-		
-		randomColorButtons[0].addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				randomColors = true;
-				SelectRandomColor=2;
-				randomColorButtons[1].setVisible(false);
-			}
-		});
-		
-		randomColorButtons[1].addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				randomColors = false;
-				SelectRandomColor=1;
-				randomColorButtons[0].setVisible(false);
-			}
-		});
-		
-		randomColorPanel.setBackground(new Color (86, 140, 48));
-		randomColorPanel.add(randomColorButtons[0]);
-		randomColorPanel.add(randomColorButtons[1]);
-		
-		add(randomColorPanel);
-		
-	}
+	
 	
 	private void makeDifficultyOptions() {
 

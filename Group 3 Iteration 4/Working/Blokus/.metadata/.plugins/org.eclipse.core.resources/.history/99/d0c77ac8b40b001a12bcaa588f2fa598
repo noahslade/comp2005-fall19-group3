@@ -1,0 +1,12 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class AI extends Shape{
+    int playerColor;
+    int index;
+    public AI(int x, int y , int clr) {
+        super(x,y,clr);
+        this.playerColor=clr;
+
+    }
+}

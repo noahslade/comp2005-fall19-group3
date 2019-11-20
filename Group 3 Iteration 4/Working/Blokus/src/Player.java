@@ -1,9 +1,9 @@
-import java.awt.Color;
 
 public class Player extends Shape{
-    Color playerColor;
+    private int playerColor;
     int index;
-    public Player(int x, int y , Color clr) {
+    
+    public Player(int x, int y , int clr) {
     	super(x,y,clr);
     	this.playerColor=clr;
     	

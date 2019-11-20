@@ -5,7 +5,7 @@ import java.awt.Color;
 class BoardButton extends JButton{
 		private int x,y;
 		private boolean isPlaced=false;
-		private Color color_game_square;
+		private String color_game_square;
 		// uselses commen		
 		public boolean isPlaced() {
 			return isPlaced;
@@ -26,7 +26,7 @@ class BoardButton extends JButton{
 		 * @param null
 		 * @return The Color/Player who placed that square that belongs to piece
 		 */
-		public Color getColorSquare()
+		public String getColorSquare()
 		{
 			return color_game_square;
 		}
@@ -35,7 +35,7 @@ class BoardButton extends JButton{
 		 * @param Color that has to been placed
 		 * @return void
 		 */
-		public void setColorSquare(Color playerColor)
+		public void setColorSquare(String playerColor)
 		{
 			color_game_square = playerColor;
 		}

@@ -274,7 +274,7 @@ public class Board extends JPanel {
         for (int i = 0; i < selectedShapeCord.length; i++) {
             if (board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].isPlaced() == false) {
 
-                board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setBackground(allPlayers[turn].getColor());
+                board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setIcon(new ImageIcon(getClass().getResource(allPlayers[turn].getColor())));
                 board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setTaken(true);
                 board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setColorSquare(allPlayers[turn].getColor());
             }
@@ -357,11 +357,11 @@ public class Board extends JPanel {
     /**
      * Constructor
      */
-    public Board(Color[] color_array,int difficulty, int numPlayers, Blokus Main) {
+    public Board(int difficulty, int numPlayers, Blokus Main) {
 
         this.main=Main;
         this.difficulty=difficulty;
-        setUpPlayers(color_array,difficulty,numPlayers);
+        setUpPlayers(difficulty,numPlayers);
         setOtherShapes();
         this.setBounds(0,0,1011, 716);
         setLayout(null);
@@ -494,7 +494,7 @@ public class Board extends JPanel {
                                 int y = ((BoardButton) e.getSource()).getIndex()[1];
                                 for (int i = 0; i < selectedShapeCord.length; i++) {
                                     if (!board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].isPlaced()){
-                                    board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setBackground(allPlayers[turn].getColor());
+                                    board_button[x + selectedShapeCord[i][0]][y + selectedShapeCord[i][1]].setIcon(new ImageIcon(getClass().getResource(allPlayers[turn].getColor())));
                                 }
                                 }
                             }
@@ -683,44 +683,44 @@ public class Board extends JPanel {
 
     }
 
-    private void setUpPlayers(Color[] color_array, int difficulty, int numPlayers) {
-        for(int i=0;i<color_array.length;i++){
+    private void setUpPlayers(int difficulty, int numPlayers) {
+        for(int i=0;i<4;i++){
             switch (i){
                 case 0:
-                    allPlayers[i]=new Player(7,3,color_array[i]);
+                    allPlayers[i]=new Player(7,3,i);
                     allPlayers[i].setBounds(43, 157, 180, 420);
                     allPlayers[i].setPlayerName("Player1");
                     break;
                 case 1:
                     if(i<numPlayers){
-                        allPlayers[i]=new Player(3,7,color_array[i]);
+                        allPlayers[i]=new Player(3,7,i);
                         allPlayers[i].setBounds(227, 23, 420, 130);//top most container
                         allPlayers[i].setPlayerName("Player2");
                     }else{
-                        allPlayers[i]=new AI(3,7,color_array[i]);
+                        allPlayers[i]=new AI(3,7,i);
                         allPlayers[i].setBounds(227, 23, 420, 130);//top most container
                         allPlayers[i].setPlayerName("CPU1");
                     }
                     break;
                 case 2:
                     if(i<numPlayers){
-                        allPlayers[i]=new Player(7,3,color_array[i]);
+                        allPlayers[i]=new Player(7,3,i);
                         allPlayers[i].setBounds(649, 157, 180, 420);
                         allPlayers[i].setPlayerName("Player3");
                     }
                     else{
-                        allPlayers[i]=new AI(7,3,color_array[i]);
+                        allPlayers[i]=new AI(7,3,i);
                         allPlayers[i].setBounds(649, 157, 180, 420);
                         allPlayers[i].setPlayerName("CPU2");
                     }
                     break;
                 case 3:
                     if(i<numPlayers){
-                        allPlayers[i]=new Player(3,7,color_array[i]);
+                        allPlayers[i]=new Player(3,7,i);
                         allPlayers[i].setBounds(227, 580, 420, 130);//bottom container
                         allPlayers[i].setPlayerName("Player4");
                     }else{
-                        allPlayers[i]=new AI(3,7,color_array[i]);
+                        allPlayers[i]=new AI(3,7,i);
                         allPlayers[i].setBounds(227, 580, 420, 130);//bottom container
                         allPlayers[i].setPlayerName("CPU3");
                     }

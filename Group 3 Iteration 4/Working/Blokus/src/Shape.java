@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -27,7 +28,8 @@ public class Shape extends JPanel {
 		return currentSelected;
 	}
 	private int currentSelected=0;
-	private Color color;
+	private int color;
+	private String texture;
 
 	private int[][][] shapesCoordinates = {      // Coordinates of all the possible 21 Shapes which later on we will use to draw shapes
 			{{0, 0}}//first piece
@@ -104,8 +106,8 @@ public class Shape extends JPanel {
 
 
 
-	public Color getColor(){
-		return this.color;
+	public String getColor(){
+		return texture;
 	}
 
 	private void rotateCoordinatesCW() {
@@ -265,7 +267,7 @@ public class Shape extends JPanel {
 				CustomShapeButton thisButton=shapeList[i][shapesCoordinates[i][x][0]+2][shapesCoordinates[i][x][1]+2];
 				thisButton.setVisible(true);
 				thisButton.setOne(1);
-				thisButton.setBackground(color);
+				thisButton.setIcon(new ImageIcon(getClass().getResource(texture)));
 			}
 			shapeList[i][j][k].shapeSize=shapesCoordinates[i].length;
 		}
@@ -273,14 +275,13 @@ public class Shape extends JPanel {
 				
 
 	// Implementing the constructor of the shape			
-	public Shape(int x, int y,Color color) {
+	public Shape(int x, int y,int color) {
 		this.color=color;
 		setLayout(new GridLayout(x,y));
 		for (int i=0;i<21;i++) {
 			shapePanels[i] = new JPanel();
 			shapePanels[i].setBackground(Color.white);
 			shapePanels[i].setLayout(new GridLayout(5,5));
-			//panel.setBackground(new Color(175, 217, 85));
 			shapePanels[i].setBounds(0, 0, 50, 50);
 			for(int j=0;j<5;j++)
 				for(int k=0;k<5;k++) {
@@ -288,8 +289,8 @@ public class Shape extends JPanel {
 					shapeList[i][j][k]=button;
 					button.setBounds(0,0,1,3);
 					shapePanels[i].add(button);
-					button.setIndex(j,k); // what?
-					button.setSelectionIndex(i); // what does this do?
+					button.setIndex(j,k);
+					button.setSelectionIndex(i); 
 					button.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							
@@ -302,6 +303,19 @@ public class Shape extends JPanel {
 				}
 			add(shapePanels[i]);
 		}
+		if (color == 0){
+			texture = "image/redStripes.png";
+		}
+		else if (color == 1){
+			texture = "image/blueStripes.png";
+		}
+		else if (color == 2){
+			texture = "image/yellowCross.png";
+		}
+		else if (color == 3){
+			texture = "image/greenDots.png";
+		}
+		System.out.println(texture);
 		makeShapes();
 	}
 	public void setBoard(Board currentBoard) {

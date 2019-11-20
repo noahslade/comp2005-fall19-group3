@@ -24,9 +24,8 @@ public class Blokus extends JFrame {
 	private JPanel Main_panel;
 	private JPanel land_panel;
 	private Init initiate_panel;
-	private ColorSelection color_panel;
 	private Board Board_panel;
-	private JPanel[] routes= {new Init(this),new ColorSelection(this), new JPanel() ,new JPanel()};
+	private JPanel[] routes= {new Init(this), new JPanel() ,new JPanel()};
 
 	/**
 	 * Launch the application.
@@ -50,39 +49,19 @@ public class Blokus extends JFrame {
 			routes[0].setVisible(true);
 			routes[1].setVisible(false);
 			routes[2].setVisible(false);
-			routes[3].setVisible(false);
-		}
-		else if(route=="color") {
-			routes[0].setVisible(false);
-			routes[1].setVisible(true);
-			routes[2].setVisible(false);
-			routes[3].setVisible(false);
 		}
 		else if(route=="board") {
 			routes[0].setVisible(false);
 			routes[1].setVisible(false);
-			routes[2].setVisible(false);
-			routes[3].setVisible(true);
+			routes[2].setVisible(true);
 		}
 		else if (route=="land"){
 			routes[0].setVisible(false);
 			routes[1].setVisible(false);
 			routes[2].setVisible(true);
-			routes[3].setVisible(false);
 		}
-//		else if(route =="Land"){
-//			getMain_panel().add(land_panel);
-//			getMain_panel().add(initiate_panel);
-//			getMain_panel().add(color_panel);
-//		}
 	}
 
-//	public void gameInfo(int humanPlayers, int cpuPlayers, int difficultyLevel) {
-//		this.humanPlayers = humanPlayers;
-//		this.cpuPlayers = cpuPlayers;
-//		this.difficultyLevel = difficultyLevel;
-//	}
-//
 	/**
 	 * Create the frame.
 	 */
@@ -96,10 +75,6 @@ public class Blokus extends JFrame {
 		//All the other panels of the project as of now
 		initiate_panel=(Init) routes[0];
 		initiate_panel.setVisible(false);
-		color_panel=(ColorSelection) routes[1];
-		color_panel.setVisible(false);
-		color_panel.setBounds(280,150,460,310);
-		color_panel.setBackground(new Color (86, 140, 48));
 //	    Board_panel=routes[3];
 //		Board_panel.setBounds(0,0,1015,720);
 //		Board_panel.setVisible(false);
@@ -128,19 +103,18 @@ public class Blokus extends JFrame {
 
 		//Adding all the other panels of the project to the main panel of the frame 
 		Main_panel.add(initiate_panel);
-		Main_panel.add(color_panel);
 		Main_panel.add(land_panel);
 //		Main_panel.add(Board_panel);
 		
 		JLabel blokus_label = new JLabel("Blokus");
-		blokus_label.setBounds(400, 70, 185, 45);
+		blokus_label.setBounds(400, 70, 250, 45);
 		land_panel.add(blokus_label);
 		blokus_label.setFont(new Font("Tahoma", Font.BOLD, 55));
 		
 		JButton start_button = new JButton("Start");
 		start_button.setBackground(Color.GREEN);
 		start_button.setHorizontalAlignment(SwingConstants.CENTER);
-		start_button.setBounds(450, 300, 100, 50);
+		start_button.setBounds(450, 300, 150, 50);
 		land_panel.add(start_button);
 		start_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
