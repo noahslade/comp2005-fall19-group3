@@ -1,0 +1,23 @@
+1.Compile instructions - javac *.java
+2.Running game- java Blokus 
+
+Things to Note
+The game is being implemented for a 4 player game, so if the user choses no. of players to 1, then the total no. of cpu automatically get assigned to 3.
+if the no. of players are 4, then the could be move on to color selection panel(if the random is chosen as No) or board(if random color is chosen as yes)
+
+The Game only includes Easy and Medium Difficuly
+Easy AI- Skips too many turn if it fails to find a piece.
+MediumAI- Try to go over the whole container to make a valid move(which means it doesn't skip turns often as compared to EasyAI) and it always tries to place the pieces with most blocks after the first move.
+
+Regarding a Final Score- There was a confusion with this statement, which later on I discussed it with Prof. Mark, He told me to put the statement and let you guys know How 
+I interpreted it, so here is the statement
+
+"plus 5 additional bonus points if the last piece they placed on the board was the smallest piece (one square)"
+
+Here is my interpretation of it
+"When Game gets over, I check what was the last piece placed by the user on the board, if it's a one square then I award them 5 points"
+
+Score- The way I have calculated score and the winner is who places the most of the pieces on the board, there is one point/ per square in the piece.
+
+That's all 
+Thank You
