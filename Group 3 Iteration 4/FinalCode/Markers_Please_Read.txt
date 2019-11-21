@@ -19,5 +19,9 @@ Here is my interpretation of it
 
 Score- The way I have calculated score and the winner is who places the most of the pieces on the board, there is one point/ per square in the piece.
 
+Issues-
+Every Component of our code is working except for the load, I mean it's working but it's not working as it's supposed to be". Please Be lenient on this. It would be really 
+helpful for us.
+
 That's all 
 Thank You
